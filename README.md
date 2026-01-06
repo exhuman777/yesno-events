@@ -53,33 +53,6 @@ anomalyScore = (currentVelocity - baseline) / baseline
 - **Market Positions**: 10 words manually selected by user
 - **Prize Pool**: Proportional distribution based on total mentions
 
-## 🚀 Getting Started
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/exhuman777/yesno-events.git
-cd yesno-events
-
-# Install dependencies
-npm install
-```
-
-### Development
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-### Build
-
-```bash
-npm run build
-npm start
-```
 
 ## 🎮 How to Play
 
