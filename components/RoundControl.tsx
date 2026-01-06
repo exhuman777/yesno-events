@@ -10,6 +10,7 @@ export function RoundControl() {
   const currentRound = useMarketStore((state) => state.currentRound);
   const currentPlayer = useMarketStore((state) => state.currentPlayer);
   const startRound = useMarketStore((state) => state.startRound);
+  const endRound = useMarketStore((state) => state.endRound);
   const reset = useMarketStore((state) => state.reset);
   const initializeServices = useMarketStore((state) => state.initializeServices);
 
@@ -23,6 +24,10 @@ export function RoundControl() {
 
     initializeServices();
     startRound(selectedInterval);
+  };
+
+  const handleEndRound = () => {
+    endRound();
   };
 
   const handleReset = () => {
@@ -125,7 +130,7 @@ export function RoundControl() {
           </div>
         </div>
         <button
-          onClick={handleReset}
+          onClick={handleEndRound}
           className="px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-500 rounded-lg text-sm font-semibold transition-colors"
         >
           Close Market

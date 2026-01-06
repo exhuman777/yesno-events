@@ -31,11 +31,11 @@ export default function Home() {
               <TrendingUp className="w-8 h-8 text-green-500" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
                 yesno.events
               </h1>
-              <p className="text-sm text-zinc-500 mt-1">
-                Mention Markets • Real-time word frequency prediction
+              <p className="text-sm text-zinc-400 mt-1 font-medium">
+                Mention Markets • Real-time word frequency prediction • v2.0
               </p>
             </div>
           </div>
