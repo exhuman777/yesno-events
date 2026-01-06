@@ -3,14 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  /* Terminal color palette */
+  --term-bg: #000000;
+  --term-bg-alt: #0a0a0a;
+  --term-border: #00ff00;
+  --term-text: #00ff00;
+  --term-text-dim: #008800;
+  --term-text-bright: #00ff00;
+  --term-cyan: #00ffff;
+  --term-yellow: #ffff00;
+  --term-red: #ff0000;
+  --term-magenta: #ff00ff;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--term-text);
+  background: var(--term-bg);
+  font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
+  letter-spacing: 0.5px;
 }
 
 @layer utilities {
@@ -19,32 +29,58 @@ body {
   }
 }
 
-/* Terminal styling */
-.terminal {
-  font-family: 'Courier New', monospace;
-  background: #1a1a1a;
-  border: 1px solid #333;
+/* Terminal Box Styling with ASCII borders */
+.term-box {
+  font-family: 'Courier New', 'Consolas', monospace;
+  background: var(--term-bg-alt);
+  border: 2px solid var(--term-border);
+  position: relative;
+  padding: 1rem;
 }
 
-/* Glow effect for hit words */
+.term-box-title {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: var(--term-bg);
+  padding: 0 8px;
+  color: var(--term-text-bright);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Terminal glow effect for active words */
 .word-hit {
-  animation: pulse-glow 1.5s ease-in-out infinite;
+  animation: term-pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
-@keyframes pulse-glow {
+@keyframes term-pulse {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+    border-color: #00ff00;
   }
   50% {
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+    border-color: #00ff00;
   }
 }
 
-/* Slide up animation for new articles */
+/* Terminal blink effect */
+@keyframes term-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.term-blink {
+  animation: term-blink 1s steps(1) infinite;
+}
+
+/* Slide up animation */
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
@@ -53,23 +89,63 @@ body {
 }
 
 .animate-slide-up {
-  animation: slide-up 0.3s ease-out;
+  animation: slide-up 0.2s ease-out;
 }
 
-/* Scrollbar styling */
+/* Terminal scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #000;
+  border-left: 1px solid #00ff00;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #00ff00;
+  border: none;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+/* Terminal button styles */
+.term-button {
+  border: 2px solid var(--term-border);
+  background: var(--term-bg);
+  color: var(--term-text);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.term-button:hover {
+  background: var(--term-border);
+  color: var(--term-bg);
+  box-shadow: 0 0 10px var(--term-border);
+}
+
+.term-button:disabled {
+  border-color: var(--term-text-dim);
+  color: var(--term-text-dim);
+  cursor: not-allowed;
+}
+
+/* Terminal input */
+.term-input {
+  background: var(--term-bg);
+  border: 2px solid var(--term-border);
+  color: var(--term-text);
+  font-family: 'Courier New', monospace;
+  padding: 0.5rem;
+}
+
+.term-input:focus {
+  outline: none;
+  box-shadow: 0 0 8px var(--term-border);
 }

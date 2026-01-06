@@ -1,7 +1,6 @@
 'use client';
 
 import { useMarketStore } from '@/store/marketStore';
-import { Activity, Zap } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 export function LiveFeed() {
@@ -15,46 +14,46 @@ export function LiveFeed() {
   }, [newsEvents]);
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 h-full flex flex-col">
-      <div className="flex items-center gap-2 mb-4">
-        <Activity className="w-5 h-5 text-blue-500" />
-        <h2 className="text-xl font-bold">Live News Feed</h2>
-        <div className="ml-auto flex items-center gap-1">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <span className="text-xs text-zinc-500">LIVE</span>
-        </div>
+    <div className="term-box h-full flex flex-col">
+      <div className="term-box-title">[ LIVE NEWS FEED ]</div>
+      <div className="flex items-center gap-2 mb-3 font-mono text-xs">
+        <span className="text-[#00ff00] term-blink">●</span>
+        <span className="text-[#00ff00]">LIVE</span>
+        <span className="text-[#008800]">|</span>
+        <span className="text-[#008800]">{newsEvents.length} EVENTS</span>
       </div>
 
       <div
         ref={feedRef}
-        className="terminal flex-1 rounded-lg p-4 overflow-y-auto custom-scrollbar space-y-3"
+        className="flex-1 overflow-y-auto custom-scrollbar space-y-2 pr-2"
       >
         {newsEvents.length === 0 ? (
-          <div className="text-center text-zinc-600 py-8">
-            <Activity className="w-8 h-8 mx-auto mb-2 opacity-50" />
-            <p className="text-sm">Waiting for news events...</p>
+          <div className="text-center text-[#008800] py-8 font-mono">
+            <pre className="text-xs">
+{`   ┌─────────┐
+   │ WAITING │
+   └─────────┘`}
+            </pre>
+            <p className="text-xs mt-2">[ NO EVENTS YET ]</p>
           </div>
         ) : (
           newsEvents.map((event) => (
             <div
               key={event.id}
-              className="border-l-2 border-blue-500 pl-3 py-2 animate-slide-up"
+              className="border-l-2 border-[#00ff00] pl-3 py-2 animate-slide-up bg-black/50"
             >
-              <div className="flex items-start gap-2 mb-1">
-                <span className="text-xs text-zinc-500 font-mono">
-                  {new Date(event.timestamp).toLocaleTimeString()}
+              <div className="flex items-start gap-2 mb-1 font-mono text-[10px]">
+                <span className="text-[#00ffff]">
+                  [{new Date(event.timestamp).toLocaleTimeString()}]
                 </span>
                 {event.matchedWords.length > 0 && (
-                  <div className="flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-yellow-500" />
-                    <span className="text-xs text-yellow-500">
-                      {event.matchedWords.length} {event.matchedWords.length === 1 ? 'match' : 'matches'}
-                    </span>
-                  </div>
+                  <span className="text-[#ffff00]">
+                    [⚡ {event.matchedWords.length} {event.matchedWords.length === 1 ? 'MATCH' : 'MATCHES'}]
+                  </span>
                 )}
               </div>
 
-              <p className="text-sm text-zinc-300 leading-relaxed mb-2">
+              <p className="text-xs text-[#00ff00] leading-relaxed mb-2 font-mono">
                 {event.headline}
               </p>
 
@@ -63,7 +62,7 @@ export function LiveFeed() {
                   {Array.from(new Set(event.matchedWords)).map((word) => (
                     <span
                       key={word}
-                      className="text-xs px-2 py-0.5 bg-green-500/20 text-green-500 rounded-full border border-green-500/30"
+                      className="text-[10px] px-2 py-0.5 bg-[#00ff00]/20 text-[#00ff00] border border-[#00ff00] font-mono font-bold"
                     >
                       {word}
                     </span>

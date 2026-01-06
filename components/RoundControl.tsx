@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import { useMarketStore } from '@/store/marketStore';
 import type { RoundInterval } from '@/types/market';
-import { Play, RotateCcw, Trophy } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
 export function RoundControl() {
   const currentRound = useMarketStore((state) => state.currentRound);
   const currentPlayer = useMarketStore((state) => state.currentPlayer);
   const startRound = useMarketStore((state) => state.startRound);
+  const endRound = useMarketStore((state) => state.endRound);
   const reset = useMarketStore((state) => state.reset);
   const initializeServices = useMarketStore((state) => state.initializeServices);
 
@@ -25,6 +25,10 @@ export function RoundControl() {
     startRound(selectedInterval);
   };
 
+  const handleEndRound = () => {
+    endRound();
+  };
+
   const handleReset = () => {
     reset();
   };
@@ -34,27 +38,29 @@ export function RoundControl() {
     const player = currentRound.participants[0];
 
     return (
-      <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-        <div className="text-center">
-          <Trophy className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-2">Market Closed!</h2>
-
-          <div className="bg-zinc-800 rounded-lg p-4 mb-4">
-            <p className="text-sm text-zinc-500 mb-1">Your Performance</p>
-            <p className="text-3xl font-bold text-green-500 mb-2">
-              {player.totalHits} mentions
+      <div className="term-box">
+        <div className="term-box-title">[ MARKET CLOSED ]</div>
+        <div className="text-center font-mono">
+          <pre className="text-[#ffff00] text-4xl mb-4">
+{`   ╔═══╗
+   ║ ★ ║
+   ╚═══╝`}
+          </pre>
+          <div className="border-2 border-[#00ff00] p-4 mb-4 inline-block">
+            <p className="text-xs text-[#00ff00] mb-2">[ FINAL RESULTS ]</p>
+            <p className="text-3xl font-bold text-[#00ff00] mb-2">
+              {player.totalHits} MENTIONS
             </p>
-            <p className="text-sm text-zinc-400">
-              Payout: {formatCurrency(player.payout)}
+            <p className="text-sm text-[#ffff00]">
+              PAYOUT: {formatCurrency(player.payout)}
             </p>
           </div>
 
           <button
             onClick={handleReset}
-            className="flex items-center gap-2 mx-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-colors"
+            className="term-button"
           >
-            <RotateCcw className="w-4 h-4" />
-            New Market
+            [↻] NEW MARKET
           </button>
         </div>
       </div>
@@ -64,21 +70,21 @@ export function RoundControl() {
   // Show start controls if no round or waiting
   if (!currentRound || currentRound.status === 'waiting') {
     return (
-      <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-        <h2 className="text-xl font-bold mb-4">Start Market</h2>
+      <div className="term-box">
+        <div className="term-box-title">[ MARKET CONTROL ]</div>
 
         {!currentPlayer && (
-          <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-            <p className="text-sm text-yellow-500">
-              ⚠ Select your words below before starting the market
+          <div className="mb-4 border-2 border-[#ffff00] p-3 bg-[#ffff00]/10">
+            <p className="text-sm text-[#ffff00] font-mono">
+              [!] SELECT YOUR WORDS BELOW BEFORE STARTING
             </p>
           </div>
         )}
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-zinc-400 mb-2">
-              Market Duration
+            <label className="block text-sm text-[#00ff00] mb-2 font-mono font-bold">
+              [ DURATION ]
             </label>
             <div className="grid grid-cols-4 gap-2">
               {(['30s', '1m', '1d', '7d'] as RoundInterval[]).map((interval) => (
@@ -86,15 +92,15 @@ export function RoundControl() {
                   key={interval}
                   onClick={() => setSelectedInterval(interval)}
                   className={`
-                    px-4 py-2 rounded-lg font-semibold transition-all
+                    px-4 py-2 font-mono font-bold transition-all border-2
                     ${
                       selectedInterval === interval
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                        ? 'bg-[#00ff00] text-black border-[#00ff00]'
+                        : 'bg-black text-[#00ff00] border-[#00ff00] hover:bg-[#00ff00]/20'
                     }
                   `}
                 >
-                  {interval}
+                  {interval.toUpperCase()}
                 </button>
               ))}
             </div>
@@ -103,10 +109,9 @@ export function RoundControl() {
           <button
             onClick={handleStartRound}
             disabled={!currentPlayer}
-            className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 disabled:bg-zinc-700 disabled:text-zinc-500 disabled:cursor-not-allowed rounded-lg font-bold text-lg transition-colors"
+            className="w-full term-button text-lg py-4"
           >
-            <Play className="w-5 h-5" />
-            Start Market ({selectedInterval})
+            [▶] START MARKET ({selectedInterval.toUpperCase()})
           </button>
         </div>
       </div>
@@ -115,20 +120,21 @@ export function RoundControl() {
 
   // Round is active - show status
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-      <div className="flex items-center justify-between">
+    <div className="term-box">
+      <div className="term-box-title">[ MARKET CONTROL ]</div>
+      <div className="flex items-center justify-between font-mono">
         <div>
-          <p className="text-sm text-zinc-500 mb-1">Market Status</p>
+          <p className="text-xs text-[#00ff00] mb-1">[ STATUS ]</p>
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <p className="text-lg font-bold text-green-500">ACTIVE</p>
+            <span className="text-[#00ff00] term-blink text-xl">●</span>
+            <p className="text-lg font-bold text-[#00ff00]">ACTIVE</p>
           </div>
         </div>
         <button
-          onClick={handleReset}
-          className="px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-500 rounded-lg text-sm font-semibold transition-colors"
+          onClick={handleEndRound}
+          className="border-2 border-[#ff0000] bg-black text-[#ff0000] px-4 py-2 font-bold hover:bg-[#ff0000] hover:text-black transition-all"
         >
-          Close Market
+          [■] CLOSE MARKET
         </button>
       </div>
     </div>

@@ -22,23 +22,17 @@ export default function Home() {
   const showWordSelector = !currentPlayer || (currentRound?.status === 'completed');
 
   return (
-    <main className="min-h-screen bg-black p-6">
+    <main className="min-h-screen p-4" style={{background: '#000'}}>
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="p-2 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-lg">
-              <TrendingUp className="w-8 h-8 text-green-500" />
-            </div>
-            <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
-                yesno.events
-              </h1>
-              <p className="text-sm text-zinc-500 mt-1">
-                Mention Markets • Real-time word frequency prediction
-              </p>
-            </div>
-          </div>
+        {/* Terminal Header */}
+        <div className="mb-6">
+          <pre className="text-[#00ff00] text-xs sm:text-sm leading-tight">
+{`╔══════════════════════════════════════════════════════════════════════════╗
+║                           YESNO.EVENTS v2.0                             ║
+║                     Mention Markets Terminal Interface                  ║
+║           Real-time word frequency prediction and anomaly detection     ║
+╚══════════════════════════════════════════════════════════════════════════╝`}
+          </pre>
         </div>
 
         {/* Dashboard Header */}
@@ -74,16 +68,13 @@ export default function Home() {
         {/* Insights Footer */}
         <InsightFooter />
 
-        {/* Info Footer */}
-        <div className="mt-8 pt-6 border-t border-zinc-800">
-          <div className="text-center">
-            <p className="text-xs text-zinc-600 mb-2">
-              yesno.events • Mention Markets MVP
-            </p>
-            <p className="text-xs text-zinc-700">
-              Real-time word frequency prediction markets with anomaly detection
-            </p>
-          </div>
+        {/* Terminal Footer */}
+        <div className="mt-6">
+          <pre className="text-[#00ff00] text-xs text-center opacity-60">
+{`────────────────────────────────────────────────────────────────────────────
+[SYSTEM] yesno.events terminal v2.0 | Type 'help' for commands
+────────────────────────────────────────────────────────────────────────────`}
+          </pre>
         </div>
       </div>
     </main>

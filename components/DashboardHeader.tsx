@@ -1,8 +1,7 @@
 'use client';
 
 import { useMarketStore } from '@/store/marketStore';
-import { formatCurrency, formatTime } from '@/lib/utils';
-import { Trophy, Clock, Flame } from 'lucide-react';
+import { formatCurrency, formatTime, formatAnomalyScore } from '@/lib/utils';
 
 export function DashboardHeader() {
   const currentRound = useMarketStore((state) => state.currentRound);
@@ -16,61 +15,52 @@ export function DashboardHeader() {
     .slice(0, 3);
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-      <div className="grid grid-cols-3 gap-6">
+    <div className="term-box">
+      <div className="term-box-title">[ STATUS ]</div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-sm">
         {/* Prize Pool */}
-        <div className="flex items-start gap-3">
-          <div className="p-2 bg-yellow-500/10 rounded-lg">
-            <Trophy className="w-5 h-5 text-yellow-500" />
+        <div className="border-2 border-[#ffff00] p-3">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[#ffff00]">[$]</span>
+            <span className="text-[#ffff00] font-bold">PRIZE POOL</span>
           </div>
-          <div>
-            <p className="text-xs text-zinc-500 mb-1">Prize Pool</p>
-            <p className="text-2xl font-bold text-yellow-500">
-              {currentRound ? formatCurrency(currentRound.prizePool) : '$0'}
-            </p>
+          <div className="text-2xl font-bold text-[#ffff00] tracking-wider">
+            {currentRound ? formatCurrency(currentRound.prizePool) : '$0'}
           </div>
         </div>
 
         {/* Timer */}
-        <div className="flex items-start gap-3">
-          <div className="p-2 bg-blue-500/10 rounded-lg">
-            <Clock className="w-5 h-5 text-blue-500" />
+        <div className="border-2 border-[#00ffff] p-3">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[#00ffff]">[⏱]</span>
+            <span className="text-[#00ffff] font-bold">TIME LEFT</span>
           </div>
-          <div>
-            <p className="text-xs text-zinc-500 mb-1">Time Remaining</p>
-            <p className="text-2xl font-bold font-mono text-blue-500">
-              {currentRound?.status === 'active'
-                ? formatTime(timeRemaining)
-                : '--:--'}
-            </p>
+          <div className="text-2xl font-bold text-[#00ffff] tracking-widest">
+            {currentRound?.status === 'active'
+              ? formatTime(timeRemaining)
+              : '--:--'}
           </div>
         </div>
 
         {/* Top Anomalies */}
-        <div className="flex items-start gap-3">
-          <div className="p-2 bg-orange-500/10 rounded-lg">
-            <Flame className="w-5 h-5 text-orange-500" />
+        <div className="border-2 border-[#ff00ff] p-3">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[#ff00ff]">[▲]</span>
+            <span className="text-[#ff00ff] font-bold">TOP TRENDING</span>
           </div>
-          <div className="flex-1">
-            <p className="text-xs text-zinc-500 mb-2">Top Trending</p>
-            {topAnomalies.length === 0 ? (
-              <p className="text-sm text-zinc-600">No trends yet</p>
-            ) : (
-              <div className="space-y-1">
-                {topAnomalies.map((stat, index) => (
-                  <div key={stat.word} className="flex items-center gap-2">
-                    <span className="text-xs text-zinc-600">#{index + 1}</span>
-                    <span className="text-sm font-bold text-orange-500">
-                      {stat.word}
-                    </span>
-                    <span className="text-xs text-zinc-500">
-                      +{Math.round(stat.anomalyScore * 100)}%
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          {topAnomalies.length === 0 ? (
+            <p className="text-xs text-[#008800]">[ NO TRENDS DETECTED ]</p>
+          ) : (
+            <div className="space-y-1">
+              {topAnomalies.map((stat, index) => (
+                <div key={stat.word} className="text-xs text-[#00ff00]">
+                  <span className="text-[#ff00ff]">{index + 1}.</span>{' '}
+                  <span className="font-bold">{stat.word}</span>{' '}
+                  <span className="text-[#ffff00]">{formatAnomalyScore(stat.anomalyScore)}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

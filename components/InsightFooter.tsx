@@ -1,7 +1,7 @@
 'use client';
 
 import { useMarketStore } from '@/store/marketStore';
-import { AlertTriangle, TrendingUp, TrendingDown, Info } from 'lucide-react';
+import { formatAnomalyScore } from '@/lib/utils';
 import { ANOMALY_THRESHOLD } from '@/lib/constants';
 
 export function InsightFooter() {
@@ -25,7 +25,7 @@ export function InsightFooter() {
     if (stats && stats.anomalyScore > ANOMALY_THRESHOLD) {
       insights.push({
         type: 'spike',
-        message: `"${word}" spiking: +${Math.round(stats.anomalyScore * 100)}% above baseline`,
+        message: `"${word}" SPIKING: ${formatAnomalyScore(stats.anomalyScore)} ABOVE BASELINE`,
       });
     }
   });
@@ -39,7 +39,7 @@ export function InsightFooter() {
   if (underperformingWords.length > 0) {
     insights.push({
       type: 'underperform',
-      message: `${underperformingWords.length} word(s) with 0 hits: ${underperformingWords.slice(0, 2).join(', ')}${underperformingWords.length > 2 ? '...' : ''}`,
+      message: `${underperformingWords.length} WORD(S) WITH 0 HITS: ${underperformingWords.slice(0, 2).join(', ')}${underperformingWords.length > 2 ? '...' : ''}`,
     });
   }
 
@@ -47,7 +47,7 @@ export function InsightFooter() {
   if (timeRemaining < 10 && timeRemaining > 0) {
     insights.push({
       type: 'info',
-      message: `${timeRemaining}s to resolution - final moments!`,
+      message: `${timeRemaining}S TO RESOLUTION - FINAL MOMENTS!`,
     });
   }
 
@@ -59,28 +59,29 @@ export function InsightFooter() {
   }
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4">
-      <div className="flex items-start gap-3">
-        <AlertTriangle className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
-        <div className="flex-1">
-          <h3 className="text-sm font-bold mb-2">Market Insights</h3>
-          <ul className="space-y-2">
-            {displayInsights.map((insight, index) => (
-              <li key={index} className="flex items-start gap-2 text-sm">
-                {insight.type === 'spike' && (
-                  <TrendingUp className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                )}
-                {insight.type === 'underperform' && (
-                  <TrendingDown className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-                )}
-                {insight.type === 'info' && (
-                  <Info className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                )}
-                <span className="text-zinc-300">{insight.message}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <div className="term-box">
+      <div className="term-box-title">[ MARKET INSIGHTS ]</div>
+      <div className="space-y-2 font-mono text-xs">
+        {displayInsights.map((insight, index) => (
+          <div key={index} className="flex items-start gap-2">
+            {insight.type === 'spike' && (
+              <span className="text-[#00ff00]">[▲]</span>
+            )}
+            {insight.type === 'underperform' && (
+              <span className="text-[#ff0000]">[▼]</span>
+            )}
+            {insight.type === 'info' && (
+              <span className="text-[#00ffff]">[i]</span>
+            )}
+            <span className={
+              insight.type === 'spike' ? 'text-[#00ff00]' :
+              insight.type === 'underperform' ? 'text-[#ff0000]' :
+              'text-[#00ffff]'
+            }>
+              {insight.message}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );

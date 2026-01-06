@@ -1,7 +1,7 @@
 'use client';
 
 import { useMarketStore } from '@/store/marketStore';
-import { TrendingUp, Circle } from 'lucide-react';
+import { formatAnomalyScore } from '@/lib/utils';
 
 export function MentionCard() {
   const currentPlayer = useMarketStore((state) => state.currentPlayer);
@@ -9,9 +9,9 @@ export function MentionCard() {
 
   if (!currentPlayer) {
     return (
-      <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-        <h2 className="text-xl font-bold mb-4">Your Market Positions</h2>
-        <p className="text-zinc-500">Select your words to begin tracking</p>
+      <div className="term-box">
+        <div className="term-box-title">[ YOUR POSITIONS ]</div>
+        <p className="text-[#008800] font-mono text-sm">[ SELECT WORDS TO BEGIN TRACKING ]</p>
       </div>
     );
   }
@@ -19,16 +19,13 @@ export function MentionCard() {
   const { bingoCard, totalHits } = currentPlayer;
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">Your Market Positions</h2>
-        <div className="flex items-center gap-2">
-          <TrendingUp className="w-4 h-4 text-green-500" />
-          <span className="text-sm font-medium">{totalHits} mentions</span>
-        </div>
+    <div className="term-box">
+      <div className="term-box-title">[ YOUR POSITIONS ]</div>
+      <div className="flex items-center justify-between mb-4 font-mono">
+        <span className="text-[#00ff00] text-xs">[▲] {totalHits} TOTAL MENTIONS</span>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-2">
         {bingoCard.words.map((word) => {
           const hits = bingoCard.hits[word] || 0;
           const stats = wordStats.get(word);
@@ -38,61 +35,63 @@ export function MentionCard() {
             <div
               key={word}
               className={`
-                relative p-4 rounded-lg border-2 transition-all duration-300
+                relative p-2 border-2 transition-all font-mono text-xs
                 ${
                   isActive
-                    ? 'border-green-500 bg-green-500/10 word-hit'
-                    : 'border-zinc-700 bg-zinc-800/50'
+                    ? 'border-[#00ff00] bg-[#00ff00]/10 word-hit'
+                    : 'border-[#008800] bg-black'
                 }
               `}
             >
-              <div className="flex items-start justify-between mb-2">
-                <span className="font-bold text-sm">{word}</span>
+              <div className="flex items-start justify-between mb-1">
+                <span className={`font-bold ${isActive ? 'text-[#00ff00]' : 'text-[#008800]'}`}>
+                  {word}
+                </span>
                 {stats?.trend === 'heating' && (
-                  <TrendingUp className="w-3 h-3 text-orange-500" />
+                  <span className="text-[#ff00ff]">▲</span>
                 )}
               </div>
 
-              <div className="flex items-center gap-1 mb-2">
+              <div className="flex items-center gap-0.5 mb-1">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Circle
+                  <span
                     key={i}
-                    className={`w-2 h-2 ${
-                      i < hits
-                        ? 'fill-green-500 text-green-500'
-                        : 'text-zinc-600'
+                    className={`${
+                      i < hits ? 'text-[#00ff00]' : 'text-[#003300]'
                     }`}
-                  />
+                  >
+                    {i < hits ? '█' : '░'}
+                  </span>
                 ))}
               </div>
 
-              <div className="text-xs text-zinc-500">
-                {hits} {hits === 1 ? 'mention' : 'mentions'}
-                {stats && (
-                  <span className="ml-2 text-orange-500">
-                    {stats.anomalyScore > 0
-                      ? `+${Math.round(stats.anomalyScore * 100)}%`
-                      : ''}
+              <div className="text-[10px]">
+                <span className={isActive ? 'text-[#00ff00]' : 'text-[#008800]'}>
+                  {hits} HIT{hits === 1 ? '' : 'S'}
+                </span>
+                {stats && stats.anomalyScore > 0 && (
+                  <span className="ml-2 text-[#ffff00] font-bold">
+                    {formatAnomalyScore(stats.anomalyScore)}
                   </span>
                 )}
               </div>
 
               {isActive && (
-                <div className="absolute inset-0 rounded-lg bg-green-500/20 animate-pulse pointer-events-none" />
+                <div className="absolute inset-0 border-2 border-[#00ff00] animate-pulse pointer-events-none" />
               )}
             </div>
           );
         })}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-zinc-800">
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-zinc-400">Total Mentions</span>
-          <span className="font-bold text-green-500">{totalHits}</span>
+      <div className="mt-4 pt-3 border-t-2 border-[#00ff00]">
+        <div className="flex items-center justify-between text-xs font-mono">
+          <span className="text-[#00ff00]">[ TOTAL MENTIONS ]</span>
+          <span className="font-bold text-[#00ff00]">{totalHits}</span>
         </div>
-        <div className="mt-2 h-2 bg-zinc-800 rounded-full overflow-hidden">
+        <div className="mt-2 h-2 bg-black border border-[#00ff00] overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-500"
+            className="h-full bg-[#00ff00]"
             style={{ width: `${Math.min((totalHits / 20) * 100, 100)}%` }}
           />
         </div>
