@@ -30,3 +30,13 @@ export function shuffleArray<T>(array: T[]): T[] {
 export function selectRandom<T>(array: T[], count: number): T[] {
   return shuffleArray(array).slice(0, count);
 }
+
+export function formatAnomalyScore(score: number): string {
+  if (score <= 0) return '';
+
+  // Cap display at 300% for readability
+  const percentage = Math.min(score * 100, 300);
+
+  // Show as integer percentage
+  return `+${Math.round(percentage)}%`;
+}

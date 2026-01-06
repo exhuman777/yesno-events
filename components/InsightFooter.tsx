@@ -1,6 +1,7 @@
 'use client';
 
 import { useMarketStore } from '@/store/marketStore';
+import { formatAnomalyScore } from '@/lib/utils';
 import { AlertTriangle, TrendingUp, TrendingDown, Info } from 'lucide-react';
 import { ANOMALY_THRESHOLD } from '@/lib/constants';
 
@@ -25,7 +26,7 @@ export function InsightFooter() {
     if (stats && stats.anomalyScore > ANOMALY_THRESHOLD) {
       insights.push({
         type: 'spike',
-        message: `"${word}" spiking: +${Math.round(stats.anomalyScore * 100)}% above baseline`,
+        message: `"${word}" spiking: ${formatAnomalyScore(stats.anomalyScore)} above baseline`,
       });
     }
   });

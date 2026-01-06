@@ -1,6 +1,7 @@
 'use client';
 
 import { useMarketStore } from '@/store/marketStore';
+import { formatAnomalyScore } from '@/lib/utils';
 import { TrendingUp, Circle } from 'lucide-react';
 
 export function MentionCard() {
@@ -68,11 +69,9 @@ export function MentionCard() {
 
               <div className="text-xs text-zinc-500">
                 {hits} {hits === 1 ? 'mention' : 'mentions'}
-                {stats && (
-                  <span className="ml-2 text-orange-500">
-                    {stats.anomalyScore > 0
-                      ? `+${Math.round(stats.anomalyScore * 100)}%`
-                      : ''}
+                {stats && stats.anomalyScore > 0 && (
+                  <span className="ml-2 text-orange-500 font-semibold">
+                    {formatAnomalyScore(stats.anomalyScore)}
                   </span>
                 )}
               </div>

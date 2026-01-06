@@ -1,7 +1,7 @@
 'use client';
 
 import { useMarketStore } from '@/store/marketStore';
-import { formatCurrency, formatTime } from '@/lib/utils';
+import { formatCurrency, formatTime, formatAnomalyScore } from '@/lib/utils';
 import { Trophy, Clock, Flame } from 'lucide-react';
 
 export function DashboardHeader() {
@@ -63,8 +63,8 @@ export function DashboardHeader() {
                     <span className="text-sm font-bold text-orange-500">
                       {stat.word}
                     </span>
-                    <span className="text-xs text-zinc-500">
-                      +{Math.round(stat.anomalyScore * 100)}%
+                    <span className="text-xs text-zinc-500 font-semibold">
+                      {formatAnomalyScore(stat.anomalyScore)}
                     </span>
                   </div>
                 ))}

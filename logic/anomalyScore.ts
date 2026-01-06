@@ -57,17 +57,25 @@ export class AnomalyScorer {
 
   /**
    * Calculate anomaly score (standard deviations from baseline)
-   * Returns: (velocity - baseline) / baseline
+   * Returns: (velocity - baseline) / baseline, capped at reasonable limits
    */
   calculateAnomaly(word: string, currentTime: number): number {
     const baseline = this.calculateBaseline(word, currentTime);
     const velocity = this.calculateVelocity(word, currentTime);
 
+    // Handle cold start: if no baseline yet, use velocity as weak signal
     if (baseline === 0) {
-      return velocity > 0 ? Infinity : 0;
+      // If velocity is also 0, no anomaly
+      if (velocity === 0) return 0;
+
+      // For first hits, show modest anomaly (0.2-0.8 range)
+      // This represents "new activity" without crazy percentages
+      return Math.min(velocity * 0.1, 0.8);
     }
 
-    return (velocity - baseline) / baseline;
+    // Normal case: calculate relative change, capped at ±5.0 (500%)
+    const anomaly = (velocity - baseline) / baseline;
+    return Math.max(-5.0, Math.min(5.0, anomaly));
   }
 
   /**
@@ -120,6 +128,31 @@ export class AnomalyScorer {
         this.hitHistory.set(word, filtered);
       }
     }
+  }
+
+  /**
+   * Seed baseline data with synthetic historical hits
+   * Simulates realistic word frequency patterns before the round starts
+   */
+  seedBaseline(words: string[], currentTime: number): void {
+    // Seed data across the last baseline window (60 seconds)
+    const startTime = currentTime - this.baselineWindow;
+
+    words.forEach((word) => {
+      // Each word gets 2-8 synthetic baseline hits
+      const baselineHits = Math.floor(Math.random() * 7) + 2;
+      const timestamps: number[] = [];
+
+      for (let i = 0; i < baselineHits; i++) {
+        // Distribute hits randomly across the baseline window
+        const randomOffset = Math.random() * this.baselineWindow;
+        timestamps.push(startTime + randomOffset);
+      }
+
+      // Sort timestamps chronologically
+      timestamps.sort((a, b) => a - b);
+      this.hitHistory.set(word, timestamps);
+    });
   }
 
   /**

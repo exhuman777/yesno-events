@@ -90,8 +90,11 @@ export const useMarketStore = create<MarketStore>((set, get) => ({
     // Reset anomaly scorer
     anomalyScorer.reset();
 
-    // Create new round
+    // Seed baseline data with synthetic history for realistic anomaly detection
     const startTime = Date.now();
+    anomalyScorer.seedBaseline(WORD_POOL, startTime);
+
+    // Create new round
     const duration = ROUND_DURATIONS[interval];
     const endTime = startTime + duration;
 
