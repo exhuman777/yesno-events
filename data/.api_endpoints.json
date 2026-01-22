@@ -1,0 +1,304 @@
+{
+  "version": "1.0",
+  "updated": "2026-01-20",
+  "endpoints": {
+    "market": {
+      "path": "/api/market",
+      "method": "GET",
+      "params": {"id": "market_id (required)"},
+      "description": "Get market details by ID"
+    },
+    "orderbook": {
+      "path": "/api/orderbook",
+      "method": "GET",
+      "params": {"id": "market_id (required)"},
+      "description": "Get orderbook (bids/asks) for a market"
+    },
+    "trades": {
+      "path": "/api/trades",
+      "method": "GET",
+      "params": {"id": "market_id (required)"},
+      "description": "Get recent trades for a market"
+    },
+    "search": {
+      "path": "/api/search",
+      "method": "GET",
+      "params": {"q": "query string", "limit": "max results (default 20)"},
+      "description": "Search markets via Polyrouter"
+    },
+    "watch": {
+      "path": "/api/watch",
+      "method": "GET",
+      "params": {"id": "market_id", "title": "market title"},
+      "description": "Add market to watchlist"
+    },
+    "unwatch": {
+      "path": "/api/unwatch",
+      "method": "GET",
+      "params": {"id": "market_id"},
+      "description": "Remove market from watchlist"
+    },
+    "watched": {
+      "path": "/api/watched",
+      "method": "GET",
+      "params": {},
+      "description": "Get all watched markets"
+    },
+    "history": {
+      "path": "/api/history",
+      "method": "GET",
+      "params": {"id": "market_id"},
+      "description": "Get price history for market"
+    },
+    "cache_size": {
+      "path": "/api/cache-size",
+      "method": "GET",
+      "params": {},
+      "description": "Get current cache size in MB"
+    },
+    "cached_trades": {
+      "path": "/api/cached-trades",
+      "method": "GET",
+      "params": {"id": "market_id"},
+      "description": "Get cached trades for market"
+    },
+    "price_history": {
+      "path": "/api/price-history",
+      "method": "GET",
+      "params": {"id": "market_id", "interval": "1h/1d/1w"},
+      "description": "Get price history with interval"
+    },
+    "diary": {
+      "path": "/api/diary",
+      "method": "GET",
+      "params": {},
+      "description": "Get all trading diary entries"
+    },
+    "diary_date": {
+      "path": "/api/diary/date",
+      "method": "GET",
+      "params": {"date": "YYYY-MM-DD"},
+      "description": "Get diary entries for specific date"
+    },
+    "diary_market": {
+      "path": "/api/diary/market",
+      "method": "GET",
+      "params": {"id": "market_id"},
+      "description": "Get diary entries for specific market"
+    },
+    "notes": {
+      "path": "/api/notes",
+      "method": "GET",
+      "params": {"id": "market_id"},
+      "description": "Get notes for a market"
+    },
+    "elon": {
+      "path": "/api/elon",
+      "method": "GET",
+      "params": {},
+      "description": "Get Elon tweet market data"
+    },
+    "elon_current": {
+      "path": "/api/elon/current",
+      "method": "GET",
+      "params": {},
+      "description": "Get current Elon tweet count"
+    },
+    "elon_tweets": {
+      "path": "/api/elon/tweets",
+      "method": "GET",
+      "params": {},
+      "description": "Get Elon tweet history"
+    },
+    "elon_stats": {
+      "path": "/api/elon/stats",
+      "method": "GET",
+      "params": {},
+      "description": "Get Elon tweet statistics"
+    },
+    "elon_models": {
+      "path": "/api/elon/models",
+      "method": "GET",
+      "params": {},
+      "description": "Get prediction models"
+    },
+    "elon_predict": {
+      "path": "/api/elon/predict",
+      "method": "GET",
+      "params": {"current": "current count", "days_elapsed": "days passed"},
+      "description": "Run prediction model"
+    },
+    "elon_update": {
+      "path": "/api/elon/update",
+      "method": "GET",
+      "params": {},
+      "description": "Update Elon data from tracker"
+    },
+    "elon_rebuild_models": {
+      "path": "/api/elon/rebuild-models",
+      "method": "GET",
+      "params": {},
+      "description": "Rebuild prediction models"
+    },
+    "elon_clob": {
+      "path": "/api/elon/clob",
+      "method": "GET",
+      "params": {"id": "market_id"},
+      "description": "Get CLOB orderbook for Elon market"
+    },
+    "elon_live_markets": {
+      "path": "/api/elon/live-markets",
+      "method": "GET",
+      "params": {"event": "event filter (optional)"},
+      "description": "Get live Elon markets with prices"
+    },
+    "elon_winners": {
+      "path": "/api/elon/winners",
+      "method": "GET",
+      "params": {},
+      "description": "Get historical Elon market winners"
+    },
+    "elon_custom_predict": {
+      "path": "/api/elon/custom-predict",
+      "method": "GET",
+      "params": {"current": "count", "elapsed": "days", "total": "total days", "rate": "custom rate"},
+      "description": "Custom prediction with user inputs"
+    },
+    "trading_price": {
+      "path": "/api/trading/price",
+      "method": "GET",
+      "params": {"id": "market_id"},
+      "description": "Get current YES/NO prices"
+    },
+    "trading_book": {
+      "path": "/api/trading/book",
+      "method": "GET",
+      "params": {"id": "market_id", "outcome": "yes/no"},
+      "description": "Get orderbook with sizes"
+    },
+    "trading_orders": {
+      "path": "/api/trading/orders",
+      "method": "GET",
+      "params": {},
+      "description": "Get your open orders"
+    },
+    "trading_positions": {
+      "path": "/api/trading/positions",
+      "method": "GET",
+      "params": {},
+      "description": "Get your positions"
+    },
+    "trading_trades": {
+      "path": "/api/trading/trades",
+      "method": "GET",
+      "params": {"limit": "max trades (default 50)"},
+      "description": "Get your trade history"
+    },
+    "trading_order": {
+      "path": "/api/trading/order",
+      "method": "POST",
+      "params": {"market_id": "id", "side": "BUY/SELL", "outcome": "yes/no", "price": "0-1", "size": "quantity"},
+      "description": "Place a single order"
+    },
+    "trading_cancel": {
+      "path": "/api/trading/cancel",
+      "method": "POST",
+      "params": {"order_id": "id to cancel", "cancel_all": "true to cancel all"},
+      "description": "Cancel order(s)"
+    },
+    "trading_mass_order": {
+      "path": "/api/trading/mass-order",
+      "method": "POST",
+      "params": {"orders": "[{market_id, side, outcome, price, size}, ...]", "delay_ms": "delay between orders (default 100)"},
+      "description": "Place multiple orders at once"
+    },
+    "trading_bracket": {
+      "path": "/api/trading/bracket",
+      "method": "GET",
+      "params": {"id": "market_id", "center": "center price 0-1", "spread": "spread from center", "size": "order size", "outcome": "yes/no"},
+      "description": "Place bracket orders (buy below + sell above center)"
+    },
+    "trading_ladder": {
+      "path": "/api/trading/ladder",
+      "method": "GET",
+      "params": {"id": "market_id", "start": "start price", "end": "end price", "steps": "number of orders", "size": "total size", "side": "BUY/SELL", "outcome": "yes/no"},
+      "description": "Place ladder orders across price range"
+    },
+    "endpoints": {
+      "path": "/api/endpoints",
+      "method": "GET",
+      "params": {},
+      "description": "Get API endpoints reference (this file)"
+    },
+    "search_vector": {
+      "path": "/api/search/vector",
+      "method": "GET",
+      "params": {"q": "query", "limit": "max results"},
+      "description": "Vector/semantic search"
+    },
+    "search_similar": {
+      "path": "/api/search/similar",
+      "method": "GET",
+      "params": {"id": "market_id", "limit": "max results"},
+      "description": "Find similar markets"
+    },
+    "kelly": {
+      "path": "/api/kelly",
+      "method": "GET",
+      "params": {"prob": "your probability", "price": "market price", "bankroll": "your bankroll", "fraction": "kelly fraction"},
+      "description": "Kelly criterion calculator"
+    },
+    "alerts": {
+      "path": "/api/alerts",
+      "method": "GET",
+      "params": {},
+      "description": "Get all price alerts"
+    },
+    "alerts_active": {
+      "path": "/api/alerts/active",
+      "method": "GET",
+      "params": {},
+      "description": "Get active (non-triggered) alerts"
+    },
+    "alerts_add": {
+      "path": "/api/alerts/add",
+      "method": "GET",
+      "params": {"id": "market_id", "title": "market title", "condition": "above/below", "target": "target price 0-1"},
+      "description": "Add a price alert"
+    },
+    "alerts_delete": {
+      "path": "/api/alerts/delete",
+      "method": "GET",
+      "params": {"id": "alert_id"},
+      "description": "Delete an alert"
+    },
+    "alerts_check": {
+      "path": "/api/alerts/check",
+      "method": "GET",
+      "params": {},
+      "description": "Check alerts against current prices"
+    },
+    "edges": {
+      "path": "/api/edges",
+      "method": "GET",
+      "params": {"min_volume": "minimum volume filter", "limit": "max results"},
+      "description": "Scan for trading edges"
+    },
+    "edges_momentum": {
+      "path": "/api/edges/momentum",
+      "method": "GET",
+      "params": {"event": "event filter (optional)"},
+      "description": "Get momentum signals"
+    }
+  },
+  "categories": {
+    "market_data": ["market", "orderbook", "trades", "search", "history", "price_history"],
+    "watchlist": ["watch", "unwatch", "watched"],
+    "trading": ["trading_price", "trading_book", "trading_orders", "trading_positions", "trading_trades", "trading_order", "trading_cancel", "trading_mass_order", "trading_bracket", "trading_ladder"],
+    "elon": ["elon", "elon_current", "elon_tweets", "elon_stats", "elon_models", "elon_predict", "elon_update", "elon_rebuild_models", "elon_clob", "elon_live_markets", "elon_winners", "elon_custom_predict"],
+    "research": ["search_vector", "search_similar", "kelly", "edges", "edges_momentum"],
+    "alerts": ["alerts", "alerts_active", "alerts_add", "alerts_delete", "alerts_check"],
+    "diary": ["diary", "diary_date", "diary_market", "notes"],
+    "system": ["cache_size", "cached_trades", "endpoints"]
+  }
+}

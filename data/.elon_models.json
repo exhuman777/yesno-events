@@ -1,0 +1,174 @@
+{
+  "linear": {
+    "name": "Linear Extrapolation",
+    "params": {
+      "avg_daily_rate": 52.3,
+      "min_daily_rate": 22.9,
+      "max_daily_rate": 94.6,
+      "samples": 21
+    }
+  },
+  "pattern": {
+    "name": "Historical Pattern",
+    "params": {
+      "avg_weekly_total": 366.0,
+      "min_weekly_total": 160,
+      "max_weekly_total": 662.0,
+      "std_dev": 139.1,
+      "samples": 21,
+      "winning_brackets": [
+        "500-519",
+        "520-539",
+        "420-439",
+        "420-439",
+        "340-359",
+        "260-279",
+        "240-259",
+        "160-179",
+        "200-219",
+        "240-259"
+      ]
+    }
+  },
+  "momentum": {
+    "name": "Momentum Trend",
+    "params": {
+      "recent_avg": 450.0,
+      "older_avg": 230.0,
+      "momentum": 220.0,
+      "momentum_pct": 95.9,
+      "trend": "strongly_up",
+      "recent_weeks": 5,
+      "projected_next": 560.0
+    }
+  },
+  "winners": [
+    {
+      "market_id": "999503",
+      "title": "Will Elon Musk post 500-519 tweets from December 26 to January 2, 2026?",
+      "bracket": "500-519",
+      "resolved_at": "2026-01-02 20:57:43+00"
+    },
+    {
+      "market_id": "1034478",
+      "title": "Will Elon Musk post 520-539 tweets from December 30 to January 6, 2026?",
+      "bracket": "520-539",
+      "resolved_at": "2026-01-06 20:40:17+00"
+    },
+    {
+      "market_id": "976939",
+      "title": "Will Elon Musk post 420-439 tweets from December 23 to December 30, 2025?",
+      "bracket": "420-439",
+      "resolved_at": "2025-12-30 20:19:59+00"
+    },
+    {
+      "market_id": "746217",
+      "title": "Will Elon Musk post 420-439 tweets from December 2 to December 9, 2025?",
+      "bracket": "420-439",
+      "resolved_at": "2025-12-09 20:31:48+00"
+    },
+    {
+      "market_id": "924495",
+      "title": "Will Elon Musk post 340-359 tweets from December 16 to December 23, 2025?",
+      "bracket": "340-359",
+      "resolved_at": "2025-12-23 20:27:31+00"
+    },
+    {
+      "market_id": "900128",
+      "title": "Will Elon Musk post 260-279 tweets from December 12 to December 19, 2025?",
+      "bracket": "260-279",
+      "resolved_at": "2025-12-19 20:40:11+00"
+    },
+    {
+      "market_id": "702319",
+      "title": "Will Elon Musk post 240-259 tweets from November 28 to December 5, 2025?",
+      "bracket": "240-259",
+      "resolved_at": "2025-12-05 21:22:35+00"
+    },
+    {
+      "market_id": "675854",
+      "title": "Will Elon Musk post 160-179 tweets from November 14 to November 21, 2025?",
+      "bracket": "160-179",
+      "resolved_at": "2025-11-21 20:15:19+00"
+    },
+    {
+      "market_id": "683627",
+      "title": "Will Elon Musk post 200-219 tweets from November 18 to November 25, 2025?",
+      "bracket": "200-219",
+      "resolved_at": "2025-11-25 20:18:19+00"
+    },
+    {
+      "market_id": "669875",
+      "title": "Will Elon Musk post 240-259 tweets from November 7 to November 14, 2025?",
+      "bracket": "240-259",
+      "resolved_at": "2025-11-14 20:21:00+00"
+    },
+    {
+      "market_id": "688604",
+      "title": "Will Elon Musk post 280-299 tweets from November 21 to November 28, 2025?",
+      "bracket": "280-299",
+      "resolved_at": "2025-11-28 20:15:43+00"
+    },
+    {
+      "market_id": "670663",
+      "title": "Will Elon Musk post 260-279 tweets from November 11 to November 18, 2025?",
+      "bracket": "260-279",
+      "resolved_at": "2025-11-18 20:20:15+00"
+    },
+    {
+      "market_id": "696487",
+      "title": "Will Elon Musk post 260-279 tweets from November 25 to December 2, 2025?",
+      "bracket": "260-279",
+      "resolved_at": "2025-12-02 20:26:03+00"
+    },
+    {
+      "market_id": "1034478",
+      "title": "Will Elon Musk post 520-539 tweets from December 30 to January 6, 2026?",
+      "bracket": "520-539",
+      "resolved_at": "2026-01-06 20:40:17+00"
+    },
+    {
+      "market_id": "1063294",
+      "title": "Will Elon Musk post 560-579 tweets from January 2 to January 9, 2026?",
+      "bracket": "560-579",
+      "resolved_at": "2026-01-09 20:42:30+00"
+    },
+    {
+      "market_id": "518121",
+      "title": "Will Elon tweet 400-449 times Jan 10-17?",
+      "bracket": "400-449",
+      "resolved_at": "2025-01-17 20:19:56+00"
+    },
+    {
+      "market_id": "519017",
+      "title": "Will Elon tweet 325-349 times Jan 17-24?",
+      "bracket": "325-349",
+      "resolved_at": "2025-01-24 21:05:41+00"
+    },
+    {
+      "market_id": "517208",
+      "title": "Will Elon tweet 500 or more times Jan 3-Jan 10?",
+      "bracket": "500",
+      "resolved_at": "2025-01-08 21:20:39+00"
+    },
+    {
+      "market_id": "517913",
+      "title": "Will Elon tweet 650-674 times Jan 3-Jan 10?",
+      "bracket": "650-674",
+      "resolved_at": "2025-01-10 20:40:42+00"
+    },
+    {
+      "market_id": "519879",
+      "title": "Will Elon tweet 275-299 times Jan 24-31?",
+      "bracket": "275-299",
+      "resolved_at": "2025-01-31 20:28:26+00"
+    },
+    {
+      "market_id": "1097825",
+      "title": "Will Elon Musk post 140+ tweets from January 5 to January 7, 2026?",
+      "bracket": "140+",
+      "resolved_at": "2026-01-07 20:20:47+00"
+    }
+  ],
+  "built_at": "2026-01-11T15:13:21.668542"
+}

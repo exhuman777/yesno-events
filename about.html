@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - YES/NO.EVENTS</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-panel: #161b22;
+            --bg-card: #21262d;
+            --accent: #ff8c00;
+            --accent-dim: #b36200;
+            --green: #3fb950;
+            --red: #f85149;
+            --cyan: #58a6ff;
+            --purple: #a371f7;
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --border: #30363d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+        }
+
+        nav .logo {
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 7rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        /* Content */
+        .content {
+            padding-bottom: 4rem;
+        }
+
+        .toc {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .toc h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-dim);
+        }
+
+        h3 {
+            color: var(--cyan);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background: var(--bg-card);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: var(--green);
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--text);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .comment { color: #6a737d; }
+        .keyword { color: var(--purple); }
+        .string { color: #a5d6ff; }
+        .function { color: var(--cyan); }
+
+        .card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .card h4 {
+            color: var(--cyan);
+            margin-bottom: 0.75rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--bg-card);
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        td {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .callout {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .callout.warning {
+            border-color: var(--red);
+        }
+
+        .callout.info {
+            border-color: var(--cyan);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.green { background: var(--green); color: #000; }
+        .badge.orange { background: var(--accent); color: #000; }
+        .badge.purple { background: var(--purple); color: #000; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .header h1 { font-size: 1.8rem; }
+            nav .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">YES/NO.EVENTS</a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#methodology">Methodology</a>
+                <a href="index.html#api">APIs</a>
+                <a href="index.html#install">Install</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>About YES/NO.EVENTS</h1>
+            <p>Documentation, Installation Guide, and Reference</p>
+        </header>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3>Contents</h3>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#install">Installation</a></li>
+                    <li><a href="#quickstart">Quick Start</a></li>
+                    <li><a href="#structure">Project Structure</a></li>
+                    <li><a href="#cli">CLI Reference</a></li>
+                    <li><a href="#api">API Integration</a></li>
+                    <li><a href="#config">Configuration</a></li>
+                    <li><a href="#keyboard">Keyboard Shortcuts</a></li>
+                </ul>
+            </div>
+
+            <!-- Overview -->
+            <section id="overview">
+                <h2>Overview</h2>
+                <p>
+                    <strong>YES/NO.EVENTS</strong> is a professional-grade trading terminal for Polymarket prediction markets.
+                    It combines a Bloomberg Terminal-style interface with natural language AI trading capabilities.
+                </p>
+
+                <div class="grid">
+                    <div class="card">
+                        <h4>Terminal TUI</h4>
+                        <p>Full-featured terminal interface with 17 screens, vim-like navigation, and keyboard-first operation.</p>
+                        <code>./yesno.sh</code>
+                    </div>
+                    <div class="card">
+                        <h4>Web Dashboard</h4>
+                        <p>Browser-based interface with real-time updates, charts, and mobile-responsive design.</p>
+                        <code>./run.sh</code>
+                    </div>
+                    <div class="card">
+                        <h4>Trading Cockpit</h4>
+                        <p>All-in-one trading interface with live feeds, orderbook, and trade execution.</p>
+                        <code>python cockpit_web.py</code>
+                    </div>
+                </div>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>100+ API Functions</strong> - Full Polymarket integration (CLOB, Gamma, Data, Polyrouter)</li>
+                    <li><strong>Local AI</strong> - Edge detection via Ollama (llama3.2), no API costs</li>
+                    <li><strong>Real-time Streaming</strong> - WebSocket price updates and trade feeds</li>
+                    <li><strong>Quant Tools</strong> - Monte Carlo, Kelly Criterion, momentum scanner</li>
+                    <li><strong>Pre-computed Data</strong> - 31 days of Elon tweet analytics</li>
+                </ul>
+            </section>
+
+            <!-- Installation -->
+            <section id="install">
+                <h2>Installation</h2>
+
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Python 3.12+</li>
+                    <li>macOS, Linux, or WSL</li>
+                    <li>~100MB disk space</li>
+                </ul>
+
+                <h3>Step 1: Clone Repository</h3>
+                <pre><code><span class="comment"># Clone the repository</span>
+git clone https://github.com/your-repo/yesno-events.git
+cd yesno-events</code></pre>
+
+                <h3>Step 2: Create Virtual Environment</h3>
+                <pre><code><span class="comment"># Create and activate venv</span>
+python3.12 -m venv .venv
+source .venv/bin/activate</code></pre>
+
+                <h3>Step 3: Install Dependencies</h3>
+                <pre><code><span class="comment"># Install required packages</span>
+pip install py-clob-client textual rich pyyaml numpy scikit-learn
+
+<span class="comment"># Make scripts executable</span>
+chmod +x *.sh</code></pre>
+
+                <h3>Step 4: Verify Installation</h3>
+                <pre><code><span class="comment"># Test the trading module</span>
+python -c "import trading; print('OK')"
+
+<span class="comment"># Run tests</span>
+./run_tests.sh</code></pre>
+
+                <h3>Optional: Enable AI Edge Detection</h3>
+                <pre><code><span class="comment"># Install Ollama (macOS)</span>
+brew install ollama
+
+<span class="comment"># Start Ollama server</span>
+ollama serve
+
+<span class="comment"># Pull the model</span>
+ollama pull llama3.2</code></pre>
+
+                <div class="callout info">
+                    <strong>Note:</strong> Ollama is optional. The terminal works without AI features.
+                </div>
+            </section>
+
+            <!-- Quick Start -->
+            <section id="quickstart">
+                <h2>Quick Start</h2>
+
+                <h3>Launch Terminal UI</h3>
+                <pre><code>./yesno.sh</code></pre>
+
+                <h3>Launch Web Dashboard</h3>
+                <pre><code>./run.sh
+<span class="comment"># Open http://localhost:8888</span></code></pre>
+
+                <h3>Launch Trading Cockpit</h3>
+                <pre><code>python cockpit_web.py
+<span class="comment"># Open http://localhost:8891</span></code></pre>
+
+                <h3>CLI Commands</h3>
+                <pre><code><span class="comment"># Scan markets</span>
+./trade.sh scan
+
+<span class="comment"># Find EV opportunities</span>
+./trade.sh ev
+
+<span class="comment"># Monte Carlo simulation</span>
+./quant.sh mc 450 72
+
+<span class="comment"># Search markets</span>
+./search.sh markets "bitcoin"</code></pre>
+            </section>
+
+            <!-- Project Structure -->
+            <section id="structure">
+                <h2>Project Structure</h2>
+                <pre><code>dashboard4all/
+├── app.py              <span class="comment"># TUI terminal (Textual) - 6,752 lines</span>
+├── dashboard4all.py    <span class="comment"># Web dashboard - 12,779 lines</span>
+├── trading.py          <span class="comment"># API layer - 3,812 lines</span>
+├── cockpit_web.py      <span class="comment"># Trading cockpit (port 8891)</span>
+├── claude_trader.py    <span class="comment"># Natural language trading CLI</span>
+├── rtds_client.py      <span class="comment"># WebSocket real-time streaming</span>
+├── quant.py            <span class="comment"># Monte Carlo, Kelly criterion</span>
+├── search.py           <span class="comment"># TF-IDF vector search</span>
+├── tracker.py          <span class="comment"># Tweet calendar aggregation</span>
+│
+├── *.sh                <span class="comment"># Shell wrappers</span>
+│
+├── data/
+│   ├── .trading_config.json  <span class="comment"># API credentials</span>
+│   ├── markets.db            <span class="comment"># SQLite market cache</span>
+│   └── cache/                <span class="comment"># API response cache</span>
+│
+├── docs/               <span class="comment"># Documentation</span>
+├── tests/              <span class="comment"># Test suite</span>
+├── calendar/           <span class="comment"># Event tracking</span>
+├── strategies/         <span class="comment"># Strategy templates</span>
+│
+└── projects/           <span class="comment"># Standalone packages</span>
+    ├── claude-trader/  <span class="comment"># Natural language trading</span>
+    ├── poly-terminal/  <span class="comment"># TUI package</span>
+    ├── poly-web/       <span class="comment"># Web package</span>
+    └── poly-calendar/  <span class="comment"># Calendar package</span></code></pre>
+            </section>
+
+            <!-- CLI Reference -->
+            <section id="cli">
+                <h2>CLI Reference</h2>
+
+                <h3>trade.sh - Market Operations</h3>
+                <table>
+                    <tr><th>Command</th><th>Description</th></tr>
+                    <tr><td><code>./trade.sh scan</code></td><td>Scan all Elon tweet markets</td></tr>
+                    <tr><td><code>./trade.sh ev</code></td><td>Find EV opportunities</td></tr>
+                    <tr><td><code>./trade.sh find "query"</code></td><td>Search markets</td></tr>
+                    <tr><td><code>./trade.sh price ID</code></td><td>Get current price</td></tr>
+                    <tr><td><code>./trade.sh book ID</code></td><td>View orderbook</td></tr>
+                    <tr><td><code>./trade.sh buy ID PRICE SIZE</code></td><td>Place buy order</td></tr>
+                    <tr><td><code>./trade.sh sell ID PRICE SIZE</code></td><td>Place sell order</td></tr>
+                    <tr><td><code>./trade.sh orders</code></td><td>View open orders</td></tr>
+                </table>
+
+                <h3>quant.sh - Quantitative Models</h3>
+                <table>
+                    <tr><th>Command</th><th>Description</th></tr>
+                    <tr><td><code>./quant.sh mc CURR HOURS</code></td><td>Monte Carlo projection</td></tr>
+                    <tr><td><code>./quant.sh kelly ID PROB</code></td><td>Kelly criterion sizing</td></tr>
+                    <tr><td><code>./quant.sh momentum</code></td><td>Momentum scanner</td></tr>
+                </table>
+
+                <h3>tracker.sh - Tweet Tracking</h3>
+                <table>
+                    <tr><th>Command</th><th>Description</th></tr>
+                    <tr><td><code>./tracker.sh cal</code></td><td>View tweet calendar</td></tr>
+                    <tr><td><code>./tracker.sh dash</code></td><td>Full dashboard</td></tr>
+                    <tr><td><code>./tracker.sh export</code></td><td>Export data</td></tr>
+                </table>
+
+                <h3>search.sh - Vector Search</h3>
+                <table>
+                    <tr><th>Command</th><th>Description</th></tr>
+                    <tr><td><code>./search.sh markets "query"</code></td><td>Search markets by description</td></tr>
+                    <tr><td><code>./search.sh strats "query"</code></td><td>Search strategies</td></tr>
+                    <tr><td><code>./search.sh similar ID</code></td><td>Find similar markets</td></tr>
+                </table>
+            </section>
+
+            <!-- API Integration -->
+            <section id="api">
+                <h2>API Integration</h2>
+
+                <p>The platform integrates with 6 data sources:</p>
+
+                <table>
+                    <tr><th>API</th><th>Endpoint</th><th>Purpose</th></tr>
+                    <tr><td><span class="badge green">CLOB</span></td><td>clob.polymarket.com</td><td>Trading, orderbook, prices</td></tr>
+                    <tr><td><span class="badge green">Gamma</span></td><td>gamma-api.polymarket.com</td><td>Markets, events, profiles</td></tr>
+                    <tr><td><span class="badge green">Data</span></td><td>data-api.polymarket.com</td><td>Positions, leaderboard</td></tr>
+                    <tr><td><span class="badge green">Polyrouter</span></td><td>api-v2.polyrouter.io</td><td>Fast search, trending</td></tr>
+                    <tr><td><span class="badge purple">Ollama</span></td><td>localhost:11434</td><td>Local AI analysis</td></tr>
+                    <tr><td><span class="badge orange">WebSocket</span></td><td>ws-subscriptions-clob.polymarket.com</td><td>Real-time streaming</td></tr>
+                </table>
+
+                <h3>Python Usage</h3>
+                <pre><code><span class="keyword">from</span> trading <span class="keyword">import</span> *
+
+<span class="comment"># Search markets</span>
+markets = polyrouter_search(<span class="string">"bitcoin"</span>)
+
+<span class="comment"># Get market price</span>
+price = get_clob_price(market_id)
+
+<span class="comment"># Get orderbook</span>
+book = get_orderbook(market_id)
+
+<span class="comment"># Place order (requires credentials)</span>
+result = place_order(market_id, <span class="string">"BUY"</span>, price=0.35, size=10)</code></pre>
+            </section>
+
+            <!-- Configuration -->
+            <section id="config">
+                <h2>Configuration</h2>
+
+                <h3>Trading Credentials</h3>
+                <p>To enable trading, create <code>data/.trading_config.json</code>:</p>
+                <pre><code>{
+  "private_key": "0x...",
+  "api_key": "...",
+  "api_secret": "...",
+  "passphrase": "...",
+  "funder": "0x..."
+}</code></pre>
+
+                <div class="callout warning">
+                    <strong>Security:</strong> Never commit credentials to git. The <code>.gitignore</code> excludes this file.
+                </div>
+
+                <h3>TUI Settings</h3>
+                <p>TUI settings are stored in <code>data/.yesno_config.json</code>:</p>
+                <pre><code>{
+  "theme": "dark",
+  "refresh_rate": 30,
+  "default_view": "markets"
+}</code></pre>
+            </section>
+
+            <!-- Keyboard Shortcuts -->
+            <section id="keyboard">
+                <h2>Keyboard Shortcuts (TUI)</h2>
+
+                <h3>Navigation</h3>
+                <table>
+                    <tr><th>Key</th><th>Action</th></tr>
+                    <tr><td><code>1-9, 0, -</code></td><td>Switch screens</td></tr>
+                    <tr><td><code>j / k</code></td><td>Navigate down / up</td></tr>
+                    <tr><td><code>g / G</code></td><td>Go to top / bottom</td></tr>
+                    <tr><td><code>Tab</code></td><td>Next panel</td></tr>
+                    <tr><td><code>Enter</code></td><td>Select / View details</td></tr>
+                    <tr><td><code>/</code></td><td>Search</td></tr>
+                    <tr><td><code>?</code></td><td>Help</td></tr>
+                    <tr><td><code>q</code></td><td>Quit</td></tr>
+                </table>
+
+                <h3>Trading</h3>
+                <table>
+                    <tr><th>Key</th><th>Action</th></tr>
+                    <tr><td><code>b</code></td><td>Buy</td></tr>
+                    <tr><td><code>s</code></td><td>Sell</td></tr>
+                    <tr><td><code>f</code></td><td>Toggle favorite</td></tr>
+                    <tr><td><code>p</code></td><td>Portfolio view</td></tr>
+                    <tr><td><code>c</code></td><td>Chart view</td></tr>
+                </table>
+            </section>
+
+            <!-- Disclaimer -->
+            <div class="callout warning" style="margin-top: 3rem;">
+                <h3>Disclaimer</h3>
+                <p>
+                    This software is for <strong>educational and research purposes only</strong>.
+                    It is NOT investment advice, trading signals, or professional trading software.
+                    Trade at your own risk. Past performance does not guarantee future results.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <a href="index.html">Home</a> |
+                <a href="https://github.com">GitHub</a> |
+                <a href="CLAUDE.md">Developer Guide</a>
+            </p>
+            <p style="margin-top: 0.5rem;">
+                Python 3.12+ | Textual | Polymarket APIs | MIT License
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

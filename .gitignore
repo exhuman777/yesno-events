@@ -1,0 +1,35 @@
+# Secrets - NEVER commit
+data/.trading_config.json
+data/.claude_trader_config.json
+*.env
+.env*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Cache
+data/cache/
+data/vectors/
+
+# Logs
+logs/
+*.log
+
+# Claude Code
+.claude/
+
+# Local
+*.local.json

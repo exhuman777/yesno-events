@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YES/NO.EVENTS - Polymarket Quant Terminal</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-panel: #161b22;
+            --bg-card: #21262d;
+            --accent: #ff8c00;
+            --accent-dim: #b36200;
+            --accent-glow: rgba(255, 140, 0, 0.3);
+            --green: #3fb950;
+            --red: #f85149;
+            --yellow: #d29922;
+            --cyan: #58a6ff;
+            --purple: #a371f7;
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --border: #30363d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.1em;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Hero / Header */
+        .header {
+            text-align: center;
+            padding: 8rem 0 4rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .header > * { position: relative; z-index: 1; }
+
+        .logo-ascii {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            white-space: pre;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            margin-top: 1rem;
+        }
+
+        .sub-tagline {
+            font-size: 1rem;
+            color: var(--green);
+            margin-top: 0.5rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        .badge.green { border-color: var(--green); color: var(--green); }
+        .badge.orange { border-color: var(--accent); color: var(--accent); }
+        .badge.cyan { border-color: var(--cyan); color: var(--cyan); }
+        .badge.purple { border-color: var(--purple); color: var(--purple); }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .copy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--green);
+            font-size: 0.8em;
+            margin-top: 1.5rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-alt {
+            background: var(--bg-panel);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-dim);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header p {
+            color: var(--text-dim);
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Terminal */
+        .terminal {
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .terminal-header {
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-btn.red { background: #ff5f56; }
+        .terminal-btn.yellow { background: #ffbd2e; }
+        .terminal-btn.green { background: #27ca40; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-right: 50px;
+        }
+
+        .terminal-content {
+            padding: 1rem;
+            font-size: 0.75rem;
+            color: var(--text);
+            white-space: pre;
+            line-height: 1.3;
+            overflow-x: auto;
+        }
+
+        .terminal-content .prompt { color: var(--green); }
+        .terminal-content .accent { color: var(--accent); }
+        .terminal-content .cyan { color: var(--cyan); }
+        .terminal-content .dim { color: var(--text-dim); }
+        .terminal-content .comment { color: #6a737d; }
+        .terminal-content .string { color: #a5d6ff; }
+        .terminal-content .number { color: #79c0ff; }
+        .terminal-content .green { color: var(--green); }
+        .terminal-content .red { color: var(--red); }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+
+        .feature-card h3 {
+            color: var(--cyan);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card h3 .key {
+            background: var(--accent);
+            color: var(--bg-dark);
+            padding: 0.1rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .feature-card ul {
+            margin-top: 0.75rem;
+            padding-left: 1.5rem;
+            list-style: none;
+        }
+
+        .feature-card li {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin: 0.25rem 0;
+        }
+
+        .feature-card li::before {
+            content: '>';
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        /* Architecture */
+        .architecture {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            overflow-x: auto;
+        }
+
+        .architecture pre {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        /* API Table */
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-panel);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .api-table th {
+            background: var(--bg-card);
+            color: var(--accent);
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .api-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .api-table tr:last-child td { border-bottom: none; }
+        .api-table tr:hover { background: var(--bg-card); }
+
+        .api-table code {
+            background: var(--bg-dark);
+            padding: 3px 6px;
+            border-radius: 3px;
+            color: var(--cyan);
+            font-size: 0.8em;
+        }
+
+        /* API Grid */
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .api-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .api-card:hover { border-color: var(--cyan); }
+
+        .api-card .count {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--cyan);
+        }
+
+        .api-card .label {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Methodology */
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .method-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .method-card h4 {
+            color: var(--cyan);
+            margin-bottom: 0.75rem;
+        }
+
+        .method-card p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .method-card code {
+            display: block;
+            background: var(--bg-dark);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--green);
+            overflow-x: auto;
+        }
+
+        /* Two Column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .two-col { grid-template-columns: 1fr; }
+        }
+
+        /* Heatmap */
+        .heatmap-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .heatmap-title {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: 40px repeat(24, 1fr);
+            gap: 2px;
+            font-size: 0.65rem;
+        }
+
+        .heatmap-label {
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+        }
+
+        .heatmap-cell {
+            aspect-ratio: 1;
+            border-radius: 2px;
+            background: var(--accent);
+            opacity: 0.15;
+            transition: all 0.2s;
+        }
+
+        .heatmap-cell:hover { transform: scale(1.3); }
+        .heatmap-cell.low { opacity: 0.25; }
+        .heatmap-cell.med { opacity: 0.5; }
+        .heatmap-cell.high { opacity: 0.75; }
+        .heatmap-cell.peak { opacity: 1; background: var(--green); }
+
+        .heatmap-hours {
+            display: grid;
+            grid-template-columns: 40px repeat(24, 1fr);
+            gap: 2px;
+            margin-top: 6px;
+        }
+
+        .heatmap-hours span {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.6rem;
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout.warning { border-color: var(--red); }
+        .callout.info { border-color: var(--cyan); }
+
+        .callout h4 { margin-bottom: 0.5rem; }
+        .callout p { color: var(--text-dim); font-size: 0.9rem; }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(88, 166, 255, 0.08) 100%);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* AI Badge */
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: var(--green);
+            font-size: 0.85rem;
+        }
+
+        /* Roadmap */
+        .roadmap-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .roadmap-item:last-child { border-bottom: none; }
+
+        .roadmap-status { width: 90px; flex-shrink: 0; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.live { background: var(--green); color: #000; }
+        .status-badge.soon { background: var(--accent); color: #000; }
+        .status-badge.planned { background: var(--border); color: var(--text-dim); }
+
+        .roadmap-content h4 { margin-bottom: 0.25rem; }
+        .roadmap-content p { color: var(--text-dim); font-size: 0.9rem; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            color: var(--text-dim);
+        }
+
+        .footer a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .footer a:hover { color: var(--accent); }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .logo-ascii { font-size: 0.6rem; }
+            .tagline { font-size: 1.1rem; }
+            .section-header h2 { font-size: 1.5rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            nav .nav-links { display: none; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .stat-value { font-size: 1.6rem; }
+        }
+
+        /* Scroll anchor offset */
+        section[id] { scroll-margin-top: 70px; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">YES/NO.EVENTS</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#methodology">Methodology</a>
+                <a href="#api">APIs</a>
+                <a href="#examples">Examples</a>
+                <a href="#install">Install</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-ascii">
+  ██╗   ██╗███████╗███████╗    ██╗    ███╗   ██╗ ██████╗
+  ╚██╗ ██╔╝██╔════╝██╔════╝   ██╔╝    ████╗  ██║██╔═══██╗
+   ╚████╔╝ █████╗  ███████╗  ██╔╝     ██╔██╗ ██║██║   ██║
+    ╚██╔╝  ██╔══╝  ╚════██║ ██╔╝      ██║╚██╗██║██║   ██║
+     ██║   ███████╗███████║██╔╝       ██║ ╚████║╚██████╔╝
+     ╚═╝   ╚══════╝╚══════╝╚═╝        ╚═╝  ╚═══╝ ╚═════╝ </div>
+            <p class="tagline">Polymarket Quant Terminal for Prediction Market Traders</p>
+            <p class="sub-tagline">The most reliable way to research & trade prediction markets</p>
+
+            <div class="badges">
+                <span class="badge green">Python 3.12+</span>
+                <span class="badge orange">100+ API Functions</span>
+                <span class="badge cyan">17 TUI Screens</span>
+                <span class="badge purple">Local AI (Ollama)</span>
+                <span class="badge">MIT License</span>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#install" class="btn btn-primary">Get Started Free</a>
+                <a href="#features" class="btn btn-secondary">Explore Features</a>
+                <a href="https://github.com" class="btn btn-secondary">View on GitHub</a>
+            </div>
+
+            <div class="copy-badge">
+                <span>OPEN SOURCE</span> Fork it. Modify it. Make it yours. MIT Licensed.
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <section class="section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">105</div>
+                    <div class="stat-label">MB Disk Space</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">~75</div>
+                    <div class="stat-label">MB RAM Usage</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100+</div>
+                    <div class="stat-label">API Functions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">API Integrations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">17</div>
+                    <div class="stat-label">TUI Screens</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">~18K</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terminal Preview -->
+        <section class="section">
+            <h2 class="section-title">Terminal Interface</h2>
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-btn red"></div>
+                    <div class="terminal-btn yellow"></div>
+                    <div class="terminal-btn green"></div>
+                    <span class="terminal-title">YES/NO.EVENTS - python app.py</span>
+                </div>
+                <div class="terminal-content">
+<span class="accent">╔══════════════════════════════════════════════════════════════════════════════╗</span>
+<span class="accent">║</span>  <span class="cyan">YES/NO.EVENTS</span> - Polymarket Quant Terminal                    <span class="dim">● CONNECTED</span>  <span class="accent">║</span>
+<span class="accent">╚══════════════════════════════════════════════════════════════════════════════╝</span>
+
+  <span class="accent">1</span> MARKETS              <span class="accent">2</span> TRADING              <span class="accent">3</span> PORTFOLIO
+  <span class="dim">Browse & Search</span>        <span class="dim">Buy & Sell</span>             <span class="dim">Positions & P&L</span>
+  <span class="dim">> Trending markets</span>     <span class="dim">> Place orders</span>         <span class="dim">> Holdings</span>
+  <span class="dim">> Search by keyword</span>    <span class="dim">> Open orders</span>          <span class="dim">> Trade history</span>
+
+  <span class="accent">4</span> ELON LAB             <span class="accent">5</span> RESEARCH             <span class="accent">6</span> ANALYTICS
+  <span class="dim">Tweet Analytics</span>        <span class="dim">Market Discovery</span>       <span class="dim">Quant Analysis</span>
+  <span class="dim">> 2,198 tweets/31d</span>     <span class="dim">> Top traders</span>          <span class="dim">> Spread analysis</span>
+  <span class="dim">> Hourly heatmap</span>       <span class="dim">> Tag volume</span>           <span class="dim">> Price momentum</span>
+
+  <span class="accent">9</span> <span class="cyan">EDGE SCANNER</span>         <span class="accent">0</span> AUTOMATION           <span class="accent">-</span> QUANT
+  <span class="dim">AI-Powered Analysis</span>    <span class="dim">Spike Detection</span>        <span class="dim">Forecasting</span>
+  <span class="dim">> Local LLM (llama3.2)</span> <span class="dim">> Volume spikes</span>        <span class="dim">> Model ensemble</span>
+  <span class="dim">> Edge detection</span>       <span class="dim">> Auto-trading</span>         <span class="dim">> Backtesting</span>
+
+<span class="dim">Press</span> <span class="accent">1-9,0,-</span> <span class="dim">navigate</span>  |  <span class="accent">?</span> <span class="dim">help</span>  |  <span class="accent">q</span> <span class="dim">quit</span></div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="section">
+            <h2 class="section-title">Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3><span class="key">1</span> Markets</h3>
+                    <p>Browse and search all Polymarket markets</p>
+                    <ul>
+                        <li>Trending markets feed</li>
+                        <li>Full-text search via Polyrouter</li>
+                        <li>Orderbook visualization</li>
+                        <li>Real-time price updates</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="key">2</span> Trading</h3>
+                    <p>Execute trades with full order management</p>
+                    <ul>
+                        <li>Limit and market orders</li>
+                        <li>Bracket orders (both sides)</li>
+                        <li>Ladder orders (multiple levels)</li>
+                        <li>Cancel orders (single/all)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="key">3</span> Portfolio</h3>
+                    <p>Track positions and P&L</p>
+                    <ul>
+                        <li>Open positions with cost basis</li>
+                        <li>Realized/unrealized P&L</li>
+                        <li>Trade history</li>
+                        <li>Activity feed</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="key">4</span> Elon Lab</h3>
+                    <p>Twitter analytics for Elon markets</p>
+                    <ul>
+                        <li>31 days of tweet data (2,198 tweets)</li>
+                        <li>Hourly activity heatmap</li>
+                        <li>Day-of-week patterns</li>
+                        <li>Peak activity detection</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="key">5</span> Research</h3>
+                    <p>Market discovery and analysis</p>
+                    <ul>
+                        <li>Top traders leaderboard</li>
+                        <li>Tag volume analytics</li>
+                        <li>Market correlations</li>
+                        <li>Trend detection</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="key">6</span> Analytics</h3>
+                    <p>Quantitative market analysis</p>
+                    <ul>
+                        <li>Spread analysis (bid-ask)</li>
+                        <li>Price momentum scanner</li>
+                        <li>Volume leaders</li>
+                        <li>Trading signals (AI-scored)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="key">9</span> Edge Scanner + AI</h3>
+                    <div class="ai-badge">Powered by Ollama llama3.2</div>
+                    <p>AI-powered edge detection</p>
+                    <ul>
+                        <li>Local LLM analysis (no API costs)</li>
+                        <li>Edge assessment (HIGH/MED/LOW)</li>
+                        <li>Direction signals (BUY YES/NO)</li>
+                        <li>Risk factor analysis</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="key">0</span> Automation</h3>
+                    <p>Automated spike detection and trading</p>
+                    <ul>
+                        <li>Volume spike detection</li>
+                        <li>Liquidity spike detection</li>
+                        <li>Dry-run mode for testing</li>
+                        <li>Auto-trade on spikes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elon Lab Deep Dive -->
+        <section class="section section-alt" style="margin: 0 -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <p class="section-label">Deep Dive</p>
+                <h2>Elon Lab: Tweet Analytics</h2>
+                <p>Pre-computed analytics from 31 days of Elon Musk's Twitter activity. No API calls needed.</p>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Why Elon Tweets Matter</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
+                        Elon Musk's tweeting patterns correlate with Polymarket activity on related markets.
+                        High tweet volume often precedes market movements. Track patterns to find edges.
+                    </p>
+
+                    <div class="callout info">
+                        <h4>Data Period</h4>
+                        <p>December 19, 2024 - January 18, 2025 (31 days)</p>
+                    </div>
+
+                    <ul style="list-style: none; margin-top: 1.5rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong style="color: var(--accent);">2,198</strong>
+                            <span style="color: var(--text-dim);">total tweets analyzed</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong style="color: var(--accent);">70.9</strong>
+                            <span style="color: var(--text-dim);">average tweets per day</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong style="color: var(--accent);">124</strong>
+                            <span style="color: var(--text-dim);">peak daily tweets (Jan 16)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0;">
+                            <strong style="color: var(--accent);">10-12 UTC</strong>
+                            <span style="color: var(--text-dim);">peak activity hours</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="heatmap-container">
+                    <div class="heatmap-title">HOURLY ACTIVITY HEATMAP (UTC)</div>
+                    <div class="heatmap-grid">
+                        <div class="heatmap-label">Mon</div>
+                        <div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell med"></div><div class="heatmap-cell high"></div><div class="heatmap-cell peak"></div><div class="heatmap-cell med"></div><div class="heatmap-cell high"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div>
+
+                        <div class="heatmap-label">Tue</div>
+                        <div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell med"></div><div class="heatmap-cell high"></div><div class="heatmap-cell peak"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell high"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div>
+
+                        <div class="heatmap-label">Wed</div>
+                        <div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell high"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell high"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div>
+
+                        <div class="heatmap-label">Thu</div>
+                        <div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell high"></div><div class="heatmap-cell med"></div><div class="heatmap-cell high"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div>
+
+                        <div class="heatmap-label">Fri</div>
+                        <div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell peak"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div>
+
+                        <div class="heatmap-label">Sat</div>
+                        <div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div>
+
+                        <div class="heatmap-label">Sun</div>
+                        <div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell med"></div><div class="heatmap-cell med"></div><div class="heatmap-cell"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell low"></div><div class="heatmap-cell"></div>
+                    </div>
+                    <div class="heatmap-hours">
+                        <span></span>
+                        <span>0</span><span></span><span></span><span></span><span>4</span><span></span><span></span><span></span><span>8</span><span></span><span></span><span></span><span>12</span><span></span><span></span><span></span><span>16</span><span></span><span></span><span></span><span>20</span><span></span><span></span><span></span>
+                    </div>
+                    <p style="color: var(--text-dim); font-size: 0.75rem; margin-top: 1rem; text-align: center;">
+                        <span style="color: var(--green);">Green = Peak</span> | Darker = More Activity
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="section">
+            <h2 class="section-title">Architecture</h2>
+            <div class="architecture">
+                <pre>
++-----------------------------------------------------------------------------+
+|                              YES/NO.EVENTS                                  |
++-----------------------------------------------------------------------------+
+|  app.py (TUI)              |  dashboard4all.py (Web)  |  trading.py (API)  |
+|  ~6,200 lines              |  ~8,500 lines            |  ~3,700 lines      |
+|  17 Screens                |  Single-file server      |  100+ Functions    |
+|  Textual framework         |  HTTP + HTML/CSS/JS      |  6 API integrations|
++-----------------------------------------------------------------------------+
+                                       |
+          +----------------------------+----------------------------+
+          |                            |                            |
+          v                            v                            v
+   +--------------+           +--------------+           +--------------+
+   |  Polymarket  |           |   Ollama     |           |   Local      |
+   |    APIs      |           |  (llama3.2)  |           |   Cache      |
+   |              |           |              |           |              |
+   | - CLOB       |           | - Edge AI    |           | - Markets    |
+   | - Gamma      |           | - Analysis   |           | - Prices     |
+   | - Data       |           | - Signals    |           | - History    |
+   | - Polyrouter |           |              |           |              |
+   +--------------+           +--------------+           +--------------+
+                </pre>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section id="methodology" class="section section-alt" style="margin: 0 -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <p class="section-label">Transparency</p>
+                <h2>Methodology</h2>
+                <p>All algorithms, calculations, and data sources are fully documented. No black boxes.</p>
+            </div>
+
+            <div class="method-grid">
+                <div class="method-card">
+                    <h4>Price Calculations</h4>
+                    <p>YES/NO prices are complementary values between 0.00 and 1.00. Spread is ask minus bid.</p>
+                    <code>YES_PRICE = value (0.00 - 1.00)
+NO_PRICE = 1.00 - YES_PRICE
+SPREAD = ASK - BID</code>
+                </div>
+
+                <div class="method-card">
+                    <h4>Edge Calculation</h4>
+                    <p>Edge is the difference between your estimated probability and market probability.</p>
+                    <code>Edge = Your_Prob - Market_Prob
+
+>5% edge = High confidence
+3-5% edge = Medium confidence
+<3% edge = Low / noise</code>
+                </div>
+
+                <div class="method-card">
+                    <h4>Kelly Criterion</h4>
+                    <p>Optimal bet sizing based on your edge and the odds. Use fractional Kelly (25%) for safety.</p>
+                    <code>f* = (bp - q) / b
+
+b = odds - 1
+p = your probability
+q = 1 - p</code>
+                </div>
+
+                <div class="method-card">
+                    <h4>Correlation Coefficient</h4>
+                    <p>Pearson correlation (r) measures relationship between two market price movements.</p>
+                    <code>r = SUM((x-x')(y-y')) /
+    SQRT(SUM(x-x')^2 * SUM(y-y')^2)
+
+0.7-1.0 = Strong positive
+-0.3-0.3 = Weak/None</code>
+                </div>
+
+                <div class="method-card">
+                    <h4>Momentum Score</h4>
+                    <p>Detects overbought/oversold conditions by comparing price to neighbors and volume.</p>
+                    <code>Momentum = (Price - Expected)*100
+           + (Vol_Ratio - 1)*5
+
+Expected = (Prev + Next) / 2
+Vol_Ratio = Vol / Avg_Vol</code>
+                </div>
+
+                <div class="method-card">
+                    <h4>Tweet Projection</h4>
+                    <p>Monte Carlo simulation projects tweet counts using random walk with mean reversion.</p>
+                    <code>Parameters:
+  volatility: 0.15
+  mean_reversion: 0.05
+  simulations: 10,000</code>
+                </div>
+            </div>
+
+            <div class="callout warning" style="margin-top: 2rem;">
+                <h4>Not Financial Advice</h4>
+                <p>This software is for educational and research purposes only. It is NOT investment advice, trading signals, or professional trading software. Trade at your own risk. Past performance does not guarantee future results.</p>
+            </div>
+        </section>
+
+        <!-- API Section -->
+        <section id="api" class="section">
+            <div class="section-header">
+                <p class="section-label">Integration</p>
+                <h2>50+ API Endpoints</h2>
+                <p>Comprehensive access to all Polymarket data sources. Fully documented with examples.</p>
+            </div>
+
+            <div class="api-grid">
+                <div class="api-card">
+                    <div class="count">15</div>
+                    <div class="label">CLOB API</div>
+                </div>
+                <div class="api-card">
+                    <div class="count">12</div>
+                    <div class="label">Gamma API</div>
+                </div>
+                <div class="api-card">
+                    <div class="count">10</div>
+                    <div class="label">Data API</div>
+                </div>
+                <div class="api-card">
+                    <div class="count">2</div>
+                    <div class="label">Polyrouter</div>
+                </div>
+                <div class="api-card">
+                    <div class="count">4</div>
+                    <div class="label">Ollama AI</div>
+                </div>
+                <div class="api-card">
+                    <div class="count">12</div>
+                    <div class="label">Quant Tools</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1.5rem;">API Integrations</h3>
+                <table class="api-table">
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Endpoint</th>
+                            <th>Functions</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CLOB</strong></td>
+                            <td><code>clob.polymarket.com</code></td>
+                            <td>15</td>
+                            <td>Trading, orderbook, prices, orders</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gamma</strong></td>
+                            <td><code>gamma-api.polymarket.com</code></td>
+                            <td>12</td>
+                            <td>Markets, events, profiles, comments</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data</strong></td>
+                            <td><code>data-api.polymarket.com</code></td>
+                            <td>10</td>
+                            <td>Positions, leaderboard, holders</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Polyrouter</strong></td>
+                            <td><code>api-v2.polyrouter.io</code></td>
+                            <td>2</td>
+                            <td>Fast search, trending markets</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ollama</strong></td>
+                            <td><code>localhost:11434</code></td>
+                            <td>4</td>
+                            <td>Local AI edge detection (llama3.2)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Quant</strong></td>
+                            <td>Local</td>
+                            <td>12</td>
+                            <td>Models, backtesting, forecasting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h3>Two Interfaces, Same Power</h3>
+                <div class="two-col" style="gap: 2rem; margin-top: 1rem;">
+                    <div>
+                        <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">TUI (Terminal)</h4>
+                        <p style="color: var(--text-dim);">Classic terminal interface with vim-like navigation. Perfect for power users and SSH sessions.</p>
+                        <code style="color: var(--green); display: block; margin-top: 0.5rem;">./yesno.sh</code>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Web Dashboard</h4>
+                        <p style="color: var(--text-dim);">Browser-based interface with charts. Access from any device on your network.</p>
+                        <code style="color: var(--green); display: block; margin-top: 0.5rem;">./run.sh  # localhost:8888</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples -->
+        <section id="examples" class="section section-alt" style="margin: 0 -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <p class="section-label">Usage</p>
+                <h2>CLI Examples</h2>
+                <p>Power user commands for market scanning, quant analysis, and tweet tracking</p>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <div class="terminal" style="margin-bottom: 1.5rem;">
+                        <div class="terminal-header">
+                            <div class="terminal-btn red"></div>
+                            <div class="terminal-btn yellow"></div>
+                            <div class="terminal-btn green"></div>
+                            <span class="terminal-title">trade.sh - Market Operations</span>
+                        </div>
+                        <div class="terminal-content"><span class="comment"># Scan all Elon tweet markets</span>
+<span class="green">./trade.sh scan</span>
+
+<span class="comment"># Find EV opportunities</span>
+<span class="green">./trade.sh ev --edge 0.05</span>
+
+<span class="comment"># Get orderbook depth</span>
+<span class="green">./trade.sh book 1148943</span>
+
+<span class="comment"># Search markets</span>
+<span class="green">./trade.sh find "bitcoin"</span>
+
+<span class="comment"># View distribution</span>
+<span class="green">./trade.sh dist --event jan13_20</span></div>
+                    </div>
+
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-btn red"></div>
+                            <div class="terminal-btn yellow"></div>
+                            <div class="terminal-btn green"></div>
+                            <span class="terminal-title">tracker.sh - Tweet Analytics</span>
+                        </div>
+                        <div class="terminal-content"><span class="comment"># View tweet calendar</span>
+<span class="green">./tracker.sh cal --days 7</span>
+
+<span class="comment"># Full dashboard</span>
+<span class="green">./tracker.sh dash</span>
+
+<span class="comment"># Export data</span>
+<span class="green">./tracker.sh export --format json</span>
+
+<span class="comment"># Add tweet count</span>
+<span class="green">./tracker.sh add 2026-01-18 --hour 14 --count 5</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="terminal" style="margin-bottom: 1.5rem;">
+                        <div class="terminal-header">
+                            <div class="terminal-btn red"></div>
+                            <div class="terminal-btn yellow"></div>
+                            <div class="terminal-btn green"></div>
+                            <span class="terminal-title">quant.sh - Quantitative Models</span>
+                        </div>
+                        <div class="terminal-content"><span class="comment"># Monte Carlo projection</span>
+<span class="green">./quant.sh mc 450 72 --sims 50000</span>
+
+<span class="accent">====================================</span>
+<span class="accent"> MONTE CARLO TWEET PROJECTION</span>
+<span class="accent">====================================</span>
+ Current: <span class="cyan">450</span> tweets in <span class="cyan">72h</span>
+ Rate: <span class="green">6.2</span> tweets/hour
+ Remaining: <span class="cyan">96</span> hours
+<span class="dim">------------------------------------</span>
+ Projections (50,000 simulations):
+   Mean:   <span class="green">1057</span>
+   Median: <span class="green">1052</span>
+   80% CI: <span class="accent">881-1236</span>
+
+<span class="comment"># Kelly Criterion</span>
+<span class="green">./quant.sh kelly 1148943 0.20 --bankroll 1000</span>
+
+ Edge: <span class="green">+14.6%</span>
+ 25% Kelly: <span class="accent">0.8%</span>
+ Bet Size: <span class="green">$8.00</span></div>
+                    </div>
+
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-btn red"></div>
+                            <div class="terminal-btn yellow"></div>
+                            <div class="terminal-btn green"></div>
+                            <span class="terminal-title">search.sh - Vector Search</span>
+                        </div>
+                        <div class="terminal-content"><span class="comment"># Search markets by description</span>
+<span class="green">./search.sh markets "high volume 500 tweets"</span>
+
+<span class="comment"># Search strategies</span>
+<span class="green">./search.sh strats "momentum entry"</span>
+
+<span class="comment"># Find similar brackets</span>
+<span class="green">./search.sh similar 1148943</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Local AI -->
+        <section class="section">
+            <h2 class="section-title">Local AI Integration</h2>
+            <div class="feature-card" style="max-width: 600px;">
+                <div class="ai-badge">Ollama + llama3.2</div>
+                <p>Edge detection powered by local LLM - no API costs, full privacy.</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <code># Install Ollama
+brew install ollama
+
+# Start server
+ollama serve
+
+# Pull model
+ollama pull llama3.2
+
+# API endpoint
+http://localhost:11434</code>
+                </div>
+                <ul style="margin-top: 1rem;">
+                    <li>Analyzes market data for trading edges</li>
+                    <li>Provides direction signals (BUY YES/NO)</li>
+                    <li>Confidence scoring (0-100%)</li>
+                    <li>Risk factor identification</li>
+                    <li>Usage tracking (tokens in/out)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section class="section section-alt" style="margin: 0 -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <p class="section-label">Future</p>
+                <h2>Roadmap</h2>
+                <p>What's live, what's coming soon, and what's planned</p>
+            </div>
+
+            <div class="roadmap-list">
+                <div class="roadmap-item">
+                    <div class="roadmap-status">
+                        <span class="status-badge live">LIVE</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>17-Screen Terminal (TUI + Web)</h4>
+                        <p>Full terminal with Markets, Trading, Portfolio, Elon Lab, Research, Analytics, API Explorer, Settings, Edge Scanner, Automation</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-status">
+                        <span class="status-badge live">LIVE</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>Pre-computed Elon Analytics</h4>
+                        <p>31 days of tweet data with heatmaps, patterns, and daily charts. Instant loading, no API calls.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-status">
+                        <span class="status-badge live">LIVE</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>Local AI Edge Detection</h4>
+                        <p>Ollama + llama3.2 integration for AI-powered analysis without API costs</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-status">
+                        <span class="status-badge live">LIVE</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>WebSocket Real-time Streaming</h4>
+                        <p>Live price updates, trade feed, and orderbook via rtds_client.py</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-status">
+                        <span class="status-badge soon">Q1 2026</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>Automated Strategy Execution</h4>
+                        <p>Define entry/exit rules, auto-execute trades based on signals</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-status">
+                        <span class="status-badge planned">PLANNED</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>Backtesting Framework</h4>
+                        <p>Complete price history for all markets. Test strategies on historical data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation -->
+        <section id="install" class="section">
+            <h2 class="section-title">Quick Installation</h2>
+            <div class="terminal" style="max-width: 800px;">
+                <div class="terminal-header">
+                    <div class="terminal-btn red"></div>
+                    <div class="terminal-btn yellow"></div>
+                    <div class="terminal-btn green"></div>
+                    <span class="terminal-title">Terminal - Installation</span>
+                </div>
+                <div class="terminal-content"><span class="comment"># Clone the repository</span>
+<span class="green">git clone https://github.com/your-repo/yesno-events.git</span>
+<span class="green">cd yesno-events</span>
+
+<span class="comment"># Create virtual environment</span>
+<span class="green">python3.12 -m venv .venv</span>
+<span class="green">source .venv/bin/activate</span>
+
+<span class="comment"># Install dependencies</span>
+<span class="green">pip install py-clob-client textual rich pyyaml numpy scikit-learn</span>
+
+<span class="comment"># Make scripts executable</span>
+<span class="green">chmod +x *.sh</span>
+
+<span class="comment"># Run Terminal UI</span>
+<span class="green">./yesno.sh</span>
+
+<span class="comment"># Or run Web Dashboard</span>
+<span class="green">./run.sh</span>
+<span class="dim"># Open http://localhost:8888 in your browser</span>
+
+<span class="comment"># Optional: Enable AI Edge Detection</span>
+<span class="green">brew install ollama</span>
+<span class="green">ollama serve</span>
+<span class="green">ollama pull llama3.2</span></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://github.com" class="btn btn-primary">View on GitHub</a>
+                <a href="about.html" class="btn btn-secondary">Full Documentation</a>
+            </div>
+        </section>
+
+        <!-- Project Files -->
+        <section class="section">
+            <h2 class="section-title">Project Files</h2>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Lines</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>app.py</strong></td>
+                        <td>~6,200</td>
+                        <td>TUI application (Textual framework)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>trading.py</strong></td>
+                        <td>~3,700</td>
+                        <td>API layer (100+ functions)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>dashboard4all.py</strong></td>
+                        <td>~8,500</td>
+                        <td>Web dashboard (single-file server)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>quant.py</strong></td>
+                        <td>~800</td>
+                        <td>Quantitative models</td>
+                    </tr>
+                    <tr>
+                        <td><strong>search.py</strong></td>
+                        <td>~400</td>
+                        <td>TF-IDF vector search</td>
+                    </tr>
+                    <tr>
+                        <td><strong>rtds_client.py</strong></td>
+                        <td>~600</td>
+                        <td>WebSocket real-time streaming</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built for traders who think in probabilities</p>
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <a href="about.html#readme">README</a>
+                <a href="about.html#install">Installation</a>
+                <a href="CLAUDE.md">Developer Guide</a>
+                <a href="https://github.com">GitHub</a>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.8rem;">
+                Python 3.12+ | Textual | Polymarket APIs | Ollama | MIT License
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #555;">
+                Not financial advice. Trade at your own risk.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

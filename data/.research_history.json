@@ -1,0 +1,1667 @@
+{
+  "searches": [
+    {
+      "query": "  - 5 active events - jan17_19 most active   - Top opportunities - jan17_19 115-139 SHORT +11% edge   - Momentum signals - jan20_27 0-19 overbought, jan17_19 90-114 oversold",
+      "timestamp": "2026-01-17T22:58:35.418672"
+    },
+    {
+      "query": "elon",
+      "timestamp": "2026-01-17T22:59:49.263780"
+    },
+    {
+      "query": "bitcoin",
+      "timestamp": "2026-01-22T08:32:05.592082"
+    }
+  ],
+  "viewed_markets": [
+    {
+      "id": "1119393",
+      "title": "Will Elon Musk post 200-219 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:07:01.198850",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1119392",
+      "title": "Will Elon Musk post 180-199 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:07:03.334812",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1119391",
+      "title": "Will Elon Musk post 160-179 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:07:05.821493",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1119390",
+      "title": "Will Elon Musk post 140-159 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:07:08.169172",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1119389",
+      "title": "Will Elon Musk post 120-139 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:07:10.497913",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1093284",
+      "title": "Will Elon Musk post 500-519 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-11T12:54:44.111388",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0105,
+          "bid": 0.0105,
+          "ask": 0.0105
+        },
+        "no": {
+          "price": 0.9895,
+          "bid": 0.9895,
+          "ask": 0.9895
+        }
+      }
+    },
+    {
+      "id": "1093282",
+      "title": "Will Elon Musk post 480-499 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-11T12:54:45.059187",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0035,
+          "bid": 0.0035,
+          "ask": 0.0035
+        },
+        "no": {
+          "price": 0.9965,
+          "bid": 0.9965,
+          "ask": 0.9965
+        }
+      }
+    },
+    {
+      "id": "1093280",
+      "title": "Will Elon Musk post 460-479 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-11T12:54:45.980308",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1093278",
+      "title": "Will Elon Musk post 440-459 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-11T12:54:46.878513",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1093276",
+      "title": "Will Elon Musk post 420-439 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-11T12:54:47.839286",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1093275",
+      "title": "Will Elon Musk post 400-419 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-11T12:54:48.939168",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1119416",
+      "title": "Will Elon Musk post 580+ tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:39.939368",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.545,
+          "bid": 0.545,
+          "ask": 0.545
+        },
+        "no": {
+          "price": 0.455,
+          "bid": 0.455,
+          "ask": 0.455
+        }
+      }
+    },
+    {
+      "id": "1119415",
+      "title": "Will Elon Musk post 560-579 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:40.823978",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.124,
+          "bid": 0.124,
+          "ask": 0.124
+        },
+        "no": {
+          "price": 0.876,
+          "bid": 0.876,
+          "ask": 0.876
+        }
+      }
+    },
+    {
+      "id": "1119414",
+      "title": "Will Elon Musk post 540-559 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:41.761313",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.075,
+          "bid": 0.075,
+          "ask": 0.075
+        },
+        "no": {
+          "price": 0.925,
+          "bid": 0.925,
+          "ask": 0.925
+        }
+      }
+    },
+    {
+      "id": "1119412",
+      "title": "Will Elon Musk post 520-539 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:42.550248",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.065,
+          "bid": 0.065,
+          "ask": 0.065
+        },
+        "no": {
+          "price": 0.935,
+          "bid": 0.935,
+          "ask": 0.935
+        }
+      }
+    },
+    {
+      "id": "1119410",
+      "title": "Will Elon Musk post 500-519 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:43.396413",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.055,
+          "bid": 0.055,
+          "ask": 0.055
+        },
+        "no": {
+          "price": 0.945,
+          "bid": 0.945,
+          "ask": 0.945
+        }
+      }
+    },
+    {
+      "id": "1119409",
+      "title": "Will Elon Musk post 480-499 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:44.368026",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.037,
+          "bid": 0.037,
+          "ask": 0.037
+        },
+        "no": {
+          "price": 0.963,
+          "bid": 0.963,
+          "ask": 0.963
+        }
+      }
+    },
+    {
+      "id": "1119408",
+      "title": "Will Elon Musk post 460-479 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:45.272566",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.032,
+          "bid": 0.032,
+          "ask": 0.032
+        },
+        "no": {
+          "price": 0.968,
+          "bid": 0.968,
+          "ask": 0.968
+        }
+      }
+    },
+    {
+      "id": "1119407",
+      "title": "Will Elon Musk post 440-459 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:46.107391",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0225,
+          "bid": 0.0225,
+          "ask": 0.0225
+        },
+        "no": {
+          "price": 0.9775,
+          "bid": 0.9775,
+          "ask": 0.9775
+        }
+      }
+    },
+    {
+      "id": "1119406",
+      "title": "Will Elon Musk post 420-439 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:47.095971",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.012,
+          "bid": 0.012,
+          "ask": 0.012
+        },
+        "no": {
+          "price": 0.988,
+          "bid": 0.988,
+          "ask": 0.988
+        }
+      }
+    },
+    {
+      "id": "1119405",
+      "title": "Will Elon Musk post 400-419 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-11T12:56:47.938848",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0125,
+          "bid": 0.0125,
+          "ask": 0.0125
+        },
+        "no": {
+          "price": 0.9875,
+          "bid": 0.9875,
+          "ask": 0.9875
+        }
+      }
+    },
+    {
+      "id": "519284",
+      "title": "Elon Musk out as Head of DOGE in 2025?",
+      "timestamp": "2026-01-11T15:18:14.576885",
+      "price_snapshot": {
+        "yes": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        },
+        "no": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        }
+      }
+    },
+    {
+      "id": "1034478",
+      "title": "Will Elon Musk post 520-539 tweets from December 30 to January 6, 2026?",
+      "timestamp": "2026-01-11T15:54:16.007009",
+      "price_snapshot": {
+        "yes": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        },
+        "no": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        }
+      }
+    },
+    {
+      "id": "1063294",
+      "title": "Will Elon Musk post 560-579 tweets from January 2 to January 9, 2026?",
+      "timestamp": "2026-01-13T20:14:03.036964",
+      "price_snapshot": {
+        "yes": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        },
+        "no": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        }
+      }
+    },
+    {
+      "id": "1168350",
+      "title": "Will Elon Musk post 190-214 tweets from January 15 to January 17, 2026?",
+      "timestamp": "2026-01-17T20:00:42.874814",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1148943",
+      "title": "Will Elon Musk post 580-599 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:00:44.067178",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.163,
+          "bid": 0.163,
+          "ask": 0.163
+        },
+        "no": {
+          "price": 0.837,
+          "bid": 0.837,
+          "ask": 0.837
+        }
+      }
+    },
+    {
+      "id": "1148938",
+      "title": "Will Elon Musk post 540-559 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:00:45.311538",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.16,
+          "bid": 0.16,
+          "ask": 0.16
+        },
+        "no": {
+          "price": 0.84,
+          "bid": 0.84,
+          "ask": 0.84
+        }
+      }
+    },
+    {
+      "id": "1148946",
+      "title": "Will Elon Musk post 600-619 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:00:47.384947",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.144,
+          "bid": 0.144,
+          "ask": 0.144
+        },
+        "no": {
+          "price": 0.856,
+          "bid": 0.856,
+          "ask": 0.856
+        }
+      }
+    },
+    {
+      "id": "1148949",
+      "title": "Will Elon Musk post 620-639 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:00:48.439404",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.101,
+          "bid": 0.101,
+          "ask": 0.101
+        },
+        "no": {
+          "price": 0.899,
+          "bid": 0.899,
+          "ask": 0.899
+        }
+      }
+    },
+    {
+      "id": "1148950",
+      "title": "Will Elon Musk post 640-659 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:01:59.404823",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0585,
+          "bid": 0.0585,
+          "ask": 0.0585
+        },
+        "no": {
+          "price": 0.9415,
+          "bid": 0.9415,
+          "ask": 0.9415
+        }
+      }
+    },
+    {
+      "id": "1148952",
+      "title": "Will Elon Musk post 660-679 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:02:00.542957",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0425,
+          "bid": 0.0425,
+          "ask": 0.0425
+        },
+        "no": {
+          "price": 0.9575,
+          "bid": 0.9575,
+          "ask": 0.9575
+        }
+      }
+    },
+    {
+      "id": "1148936",
+      "title": "Will Elon Musk post 500-519 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:02:01.681468",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0355,
+          "bid": 0.0355,
+          "ask": 0.0355
+        },
+        "no": {
+          "price": 0.9645,
+          "bid": 0.9645,
+          "ask": 0.9645
+        }
+      }
+    },
+    {
+      "id": "1148956",
+      "title": "Will Elon Musk post 700-719 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:02:03.878735",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.015,
+          "bid": 0.015,
+          "ask": 0.015
+        },
+        "no": {
+          "price": 0.985,
+          "bid": 0.985,
+          "ask": 0.985
+        }
+      }
+    },
+    {
+      "id": "1148932",
+      "title": "Will Elon Musk post 460-479 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:02:05.119608",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0105,
+          "bid": 0.0105,
+          "ask": 0.0105
+        },
+        "no": {
+          "price": 0.9895,
+          "bid": 0.9895,
+          "ask": 0.9895
+        }
+      }
+    },
+    {
+      "id": "1148934",
+      "title": "Will Elon Musk post 480-499 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:02:06.233509",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0105,
+          "bid": 0.0105,
+          "ask": 0.0105
+        },
+        "no": {
+          "price": 0.9895,
+          "bid": 0.9895,
+          "ask": 0.9895
+        }
+      }
+    },
+    {
+      "id": "1148957",
+      "title": "Will Elon Musk post 720-739 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:02:09.213793",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.006,
+          "bid": 0.006,
+          "ask": 0.006
+        },
+        "no": {
+          "price": 0.994,
+          "bid": 0.994,
+          "ask": 0.994
+        }
+      }
+    },
+    {
+      "id": "1148930",
+      "title": "Will Elon Musk post 420-439 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:03:36.113216",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.003,
+          "bid": 0.003,
+          "ask": 0.003
+        },
+        "no": {
+          "price": 0.997,
+          "bid": 0.997,
+          "ask": 0.997
+        }
+      }
+    },
+    {
+      "id": "1148928",
+      "title": "Will Elon Musk post 380-399 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:03:38.559683",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1148927",
+      "title": "Will Elon Musk post 360-379 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T20:03:41.234497",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172400",
+      "title": "Will Elon Musk post 540-559 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:03:42.357656",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.115,
+          "bid": 0.115,
+          "ask": 0.115
+        },
+        "no": {
+          "price": 0.885,
+          "bid": 0.885,
+          "ask": 0.885
+        }
+      }
+    },
+    {
+      "id": "1172399",
+      "title": "Will Elon Musk post 520-539 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:03:46.086799",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.095,
+          "bid": 0.095,
+          "ask": 0.095
+        },
+        "no": {
+          "price": 0.905,
+          "bid": 0.905,
+          "ask": 0.905
+        }
+      }
+    },
+    {
+      "id": "1172398",
+      "title": "Will Elon Musk post 500-519 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:05:35.923284",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.085,
+          "bid": 0.085,
+          "ask": 0.085
+        },
+        "no": {
+          "price": 0.915,
+          "bid": 0.915,
+          "ask": 0.915
+        }
+      }
+    },
+    {
+      "id": "1172406",
+      "title": "Will Elon Musk post 620-639 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:05:37.194222",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.075,
+          "bid": 0.075,
+          "ask": 0.075
+        },
+        "no": {
+          "price": 0.925,
+          "bid": 0.925,
+          "ask": 0.925
+        }
+      }
+    },
+    {
+      "id": "1172407",
+      "title": "Will Elon Musk post 640-659 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:05:38.320604",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0605,
+          "bid": 0.0605,
+          "ask": 0.0605
+        },
+        "no": {
+          "price": 0.9395,
+          "bid": 0.9395,
+          "ask": 0.9395
+        }
+      }
+    },
+    {
+      "id": "1172411",
+      "title": "Will Elon Musk post 680-699 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:05:40.662019",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.025,
+          "bid": 0.025,
+          "ask": 0.025
+        },
+        "no": {
+          "price": 0.975,
+          "bid": 0.975,
+          "ask": 0.975
+        }
+      }
+    },
+    {
+      "id": "1172417",
+      "title": "Will Elon Musk post 740+ tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:05:41.714613",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.014,
+          "bid": 0.014,
+          "ask": 0.014
+        },
+        "no": {
+          "price": 0.986,
+          "bid": 0.986,
+          "ask": 0.986
+        }
+      }
+    },
+    {
+      "id": "1172415",
+      "title": "Will Elon Musk post 720-739 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:05:43.953518",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0115,
+          "bid": 0.0115,
+          "ask": 0.0115
+        },
+        "no": {
+          "price": 0.9885,
+          "bid": 0.9885,
+          "ask": 0.9885
+        }
+      }
+    },
+    {
+      "id": "1172375",
+      "title": "Will Elon Musk post 120-139 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:05:45.074672",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172373",
+      "title": "Will Elon Musk post 100-119 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:07:40.378323",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172377",
+      "title": "Will Elon Musk post 160-179 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:07:41.504476",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172378",
+      "title": "Will Elon Musk post 180-199 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:07:43.861418",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172380",
+      "title": "Will Elon Musk post 220-239 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T20:07:45.037046",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1203737",
+      "title": "Will Elon Musk post 0-19 tweets from January 20 to January 27, 2026?",
+      "timestamp": "2026-01-17T20:09:44.495797",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1192648",
+      "title": "Will Elon Musk post 40-64 tweets from January 17 to January 19, 2026?",
+      "timestamp": "2026-01-17T20:13:49.339789",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.005,
+          "bid": 0.005,
+          "ask": 0.005
+        },
+        "no": {
+          "price": 0.995,
+          "bid": 0.995,
+          "ask": 0.995
+        }
+      }
+    },
+    {
+      "id": "1168354",
+      "title": "Will Elon Musk post 240+ tweets from January 15 to January 17, 2026?",
+      "timestamp": "2026-01-17T20:17:37.462639",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1168346",
+      "title": "Will Elon Musk post 165-189 tweets from January 15 to January 17, 2026?",
+      "timestamp": "2026-01-17T21:40:45.498114",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        },
+        "no": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        }
+      }
+    },
+    {
+      "id": "1148959",
+      "title": "Will Elon Musk post 740+ tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T21:40:46.856698",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.007,
+          "bid": 0.007,
+          "ask": 0.007
+        },
+        "no": {
+          "price": 0.993,
+          "bid": 0.993,
+          "ask": 0.993
+        }
+      }
+    },
+    {
+      "id": "1148929",
+      "title": "Will Elon Musk post 400-419 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T21:40:47.960249",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1172403",
+      "title": "Will Elon Musk post 600-619 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T21:40:51.624766",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0805,
+          "bid": 0.0805,
+          "ask": 0.0805
+        },
+        "no": {
+          "price": 0.9195,
+          "bid": 0.9195,
+          "ask": 0.9195
+        }
+      }
+    },
+    {
+      "id": "1172414",
+      "title": "Will Elon Musk post 700-719 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T21:40:52.836108",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0175,
+          "bid": 0.0175,
+          "ask": 0.0175
+        },
+        "no": {
+          "price": 0.9825,
+          "bid": 0.9825,
+          "ask": 0.9825
+        }
+      }
+    },
+    {
+      "id": "1172376",
+      "title": "Will Elon Musk post 140-159 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T21:40:54.051092",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1203743",
+      "title": "Will Elon Musk post 100-119 tweets from January 20 to January 27, 2026?",
+      "timestamp": "2026-01-17T21:40:55.481912",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1203738",
+      "title": "Will Elon Musk post 20-39 tweets from January 20 to January 27, 2026?",
+      "timestamp": "2026-01-17T21:40:56.398411",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1192646",
+      "title": "Will Elon Musk post <40 tweets from January 17 to January 19, 2026?",
+      "timestamp": "2026-01-17T21:42:56.203135",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1168353",
+      "title": "Will Elon Musk post 215-239 tweets from January 15 to January 17, 2026?",
+      "timestamp": "2026-01-17T21:48:45.407224",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1148926",
+      "title": "Will Elon Musk post 340-359 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-17T21:48:50.321214",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172372",
+      "title": "Will Elon Musk post 80-99 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T21:48:53.904962",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172391",
+      "title": "Will Elon Musk post 360-379 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T22:02:25.912055",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0095,
+          "bid": 0.0095,
+          "ask": 0.0095
+        },
+        "no": {
+          "price": 0.9905,
+          "bid": 0.9905,
+          "ask": 0.9905
+        }
+      }
+    },
+    {
+      "id": "1172384",
+      "title": "Will Elon Musk post 280-299 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T22:02:26.864663",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1172396",
+      "title": "Will Elon Musk post 460-479 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T22:54:19.765467",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.055,
+          "bid": 0.055,
+          "ask": 0.055
+        },
+        "no": {
+          "price": 0.945,
+          "bid": 0.945,
+          "ask": 0.945
+        }
+      }
+    },
+    {
+      "id": "1202402",
+      "title": "Wizards vs. Nuggets: O/U 231.5",
+      "timestamp": "2026-01-17T22:58:43.953060",
+      "price_snapshot": {
+        "over": {
+          "price": 0.435,
+          "bid": 0.435,
+          "ask": 0.435
+        },
+        "under": {
+          "price": 0.565,
+          "bid": 0.565,
+          "ask": 0.565
+        }
+      }
+    },
+    {
+      "id": "556573",
+      "title": "Will Elon tweet 150–164 times June 27–July 4?",
+      "timestamp": "2026-01-17T22:59:58.157367",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1172382",
+      "title": "Will Elon Musk post 240-259 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-17T23:10:17.286425",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0015,
+          "bid": 0.0015,
+          "ask": 0.0015
+        },
+        "no": {
+          "price": 0.9985,
+          "bid": 0.9985,
+          "ask": 0.9985
+        }
+      }
+    },
+    {
+      "id": "1172393",
+      "title": "Will Elon Musk post 400-419 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T07:26:56.013408",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0095,
+          "bid": 0.0095,
+          "ask": 0.0095
+        },
+        "no": {
+          "price": 0.9905,
+          "bid": 0.9905,
+          "ask": 0.9905
+        }
+      }
+    },
+    {
+      "id": "1172392",
+      "title": "Will Elon Musk post 380-399 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T07:26:56.966659",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0085,
+          "bid": 0.0085,
+          "ask": 0.0085
+        },
+        "no": {
+          "price": 0.9915,
+          "bid": 0.9915,
+          "ask": 0.9915
+        }
+      }
+    },
+    {
+      "id": "1093290",
+      "title": "Will Elon Musk post 580+ tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-18T12:55:14.235775",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1119399",
+      "title": "Will Elon Musk post 300-319 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-18T12:55:15.119312",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1093289",
+      "title": "Will Elon Musk post 560-579 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-18T12:55:18.137443",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1119400",
+      "title": "Will Elon Musk post 320-339 tweets from January 9 to January 16, 2026?",
+      "timestamp": "2026-01-18T12:55:19.052034",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1093288",
+      "title": "Will Elon Musk post 540-559 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-18T12:55:20.799902",
+      "price_snapshot": {
+        "yes": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        },
+        "no": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        }
+      }
+    },
+    {
+      "id": "1093287",
+      "title": "Will Elon Musk post 520-539 tweets from January 6 to January 13, 2026?",
+      "timestamp": "2026-01-18T12:55:22.900064",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1148896",
+      "title": "Will Elon Musk post 0-19 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-18T12:55:24.895105",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1148905",
+      "title": "Will Elon Musk post 100-119 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-18T12:55:26.755929",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1148907",
+      "title": "Will Elon Musk post 120-139 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-18T12:55:27.660113",
+      "price_snapshot": {
+        "yes": {
+          "price": 0,
+          "bid": 0,
+          "ask": 0
+        },
+        "no": {
+          "price": 1,
+          "bid": 1,
+          "ask": 1
+        }
+      }
+    },
+    {
+      "id": "1172394",
+      "title": "Will Elon Musk post 420-439 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T14:19:04.387033",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.021,
+          "bid": 0.021,
+          "ask": 0.021
+        },
+        "no": {
+          "price": 0.979,
+          "bid": 0.979,
+          "ask": 0.979
+        }
+      }
+    },
+    {
+      "id": "1172395",
+      "title": "Will Elon Musk post 440-459 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T15:34:07.534546",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0205,
+          "bid": 0.0205,
+          "ask": 0.0205
+        },
+        "no": {
+          "price": 0.9795,
+          "bid": 0.9795,
+          "ask": 0.9795
+        }
+      }
+    },
+    {
+      "id": "1148940",
+      "title": "Will Elon Musk post 560-579 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-18T15:42:01.917488",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.1985,
+          "bid": 0.1985,
+          "ask": 0.1985
+        },
+        "no": {
+          "price": 0.8015,
+          "bid": 0.8015,
+          "ask": 0.8015
+        }
+      }
+    },
+    {
+      "id": "1148937",
+      "title": "Will Elon Musk post 520-539 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-18T15:42:02.949217",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.075,
+          "bid": 0.075,
+          "ask": 0.075
+        },
+        "no": {
+          "price": 0.925,
+          "bid": 0.925,
+          "ask": 0.925
+        }
+      }
+    },
+    {
+      "id": "1148955",
+      "title": "Will Elon Musk post 680-699 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-18T15:42:03.705778",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0105,
+          "bid": 0.0105,
+          "ask": 0.0105
+        },
+        "no": {
+          "price": 0.9895,
+          "bid": 0.9895,
+          "ask": 0.9895
+        }
+      }
+    },
+    {
+      "id": "1148931",
+      "title": "Will Elon Musk post 440-459 tweets from January 13 to January 20, 2026?",
+      "timestamp": "2026-01-18T15:42:04.662656",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0045,
+          "bid": 0.0045,
+          "ask": 0.0045
+        },
+        "no": {
+          "price": 0.9955,
+          "bid": 0.9955,
+          "ask": 0.9955
+        }
+      }
+    },
+    {
+      "id": "1172401",
+      "title": "Will Elon Musk post 560-579 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T15:42:05.400035",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.12,
+          "bid": 0.12,
+          "ask": 0.12
+        },
+        "no": {
+          "price": 0.88,
+          "bid": 0.88,
+          "ask": 0.88
+        }
+      }
+    },
+    {
+      "id": "1172402",
+      "title": "Will Elon Musk post 580-599 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T15:42:06.155569",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.115,
+          "bid": 0.115,
+          "ask": 0.115
+        },
+        "no": {
+          "price": 0.885,
+          "bid": 0.885,
+          "ask": 0.885
+        }
+      }
+    },
+    {
+      "id": "1172408",
+      "title": "Will Elon Musk post 660-679 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T15:42:07.751741",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.022,
+          "bid": 0.022,
+          "ask": 0.022
+        },
+        "no": {
+          "price": 0.978,
+          "bid": 0.978,
+          "ask": 0.978
+        }
+      }
+    },
+    {
+      "id": "1172388",
+      "title": "Will Elon Musk post 320-339 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T15:42:08.709760",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.002,
+          "bid": 0.002,
+          "ask": 0.002
+        },
+        "no": {
+          "price": 0.998,
+          "bid": 0.998,
+          "ask": 0.998
+        }
+      }
+    },
+    {
+      "id": "1172383",
+      "title": "Will Elon Musk post 260-279 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T15:42:09.652760",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "1172379",
+      "title": "Will Elon Musk post 200-219 tweets from January 16 to January 23, 2026?",
+      "timestamp": "2026-01-18T15:42:10.539414",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.0005,
+          "bid": 0.0005,
+          "ask": 0.0005
+        },
+        "no": {
+          "price": 0.9995,
+          "bid": 0.9995,
+          "ask": 0.9995
+        }
+      }
+    },
+    {
+      "id": "836162",
+      "title": "Elon Musk trillionaire before 2027?",
+      "timestamp": "2026-01-21T12:24:06.049785",
+      "price_snapshot": {
+        "yes": {
+          "price": 0.545,
+          "bid": 0.545,
+          "ask": 0.545
+        },
+        "no": {
+          "price": 0.455,
+          "bid": 0.455,
+          "ask": 0.455
+        }
+      }
+    }
+  ]
+}
