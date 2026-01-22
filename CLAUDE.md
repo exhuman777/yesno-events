@@ -57,7 +57,7 @@ lsof -ti:8891 | xargs kill -9
 | `quant.py` | 521 | Monte Carlo, Kelly criterion | No |
 | `search.py` | 571 | TF-IDF vector search | No |
 | `tracker.py` | 570 | Tweet calendar aggregation | No |
-| `rtds_client.py` | 611 | WebSocket real-time client | No |
+| `rtds_client.py` | 610 | WebSocket real-time client | No |
 
 ## Key patterns
 
